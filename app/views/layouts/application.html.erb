@@ -8,6 +8,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script>
+        function showCreateItemForm() {
+            document.getElementById("selectMenuItemForm").style.display = "none";
+            document.getElementById("createMenuItemForm").style.display = "block";
+        }
+
+        function showSelectItemForm() {
+            document.getElementById("createMenuItemForm").style.display = "none";
+            document.getElementById("selectMenuItemForm").style.display = "block";
+        }
+
+        
+    </script>
+
   </head>
 
   <body>

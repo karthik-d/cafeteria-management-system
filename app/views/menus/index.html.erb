@@ -1,0 +1,17 @@
+<article class="MenuPage">
+
+    <h1 class="MenusPage__title"> Available Menus </h1>
+
+    <section class="MenuPage__listing">
+        <% Menu.all.each do |menu| %>
+            <div class="Menu__block <%= menu.is_active ? "Menu__activeBlock" : "" %>" >
+                <p class="Menu__nameText"> <%= menu.name %> </p>
+            </div>
+        <% end %>
+    </section>
+
+    <section class="MenuPage__addNew">
+        <%= link_to("+ Add a new menu", new_menu_path, class: "MenuPage__addLink") %>
+    </section>
+
+</article>

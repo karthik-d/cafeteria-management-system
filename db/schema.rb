@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_215744) do
+ActiveRecord::Schema.define(version: 2021_02_09_124103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "item_histories", force: :cascade do |t|
+    t.bigint "item_id"
+    t.string "name"
+    t.string "description"
+    t.string "diet_type"
+    t.datetime "data_updated_at"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "diet_type"
+    t.datetime "updated_at", default: "2021-02-09 13:58:29"
+    t.datetime "archived_at"
+  end
+
+  create_table "menu_item_histories", force: :cascade do |t|
+    t.bigint "menu_id"
+    t.bigint "item_id"
+    t.decimal "price"
+    t.datetime "data_updated_at"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.bigint "menu_id"
+    t.bigint "item_id"
+    t.decimal "price"
+    t.datetime "updated_at", default: "2021-02-09 13:58:29"
+    t.datetime "archived_at"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_histories", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "role"
+    t.string "email"
+    t.string "password_digest"
+    t.string "mobile_num"
+    t.datetime "data_updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "firstname"
@@ -22,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_215744) do
     t.string "email"
     t.string "password_digest"
     t.string "mobile_num"
-    t.datetime "updated_at", default: "2021-02-08 22:37:49"
+    t.datetime "updated_at", default: "2021-02-09 13:58:29"
     t.datetime "archived_at"
   end
 
