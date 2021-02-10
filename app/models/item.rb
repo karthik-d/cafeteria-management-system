@@ -4,7 +4,8 @@ class Item < ApplicationRecord
 
     def self.not_selected_for_new_menu(selected_items)
         puts "hello"
-        selected_ids = selected_items.map { |item| item["id"] }
+        selected_ids = selected_items.keys.map(&:to_i)
+        puts selected_ids
         Item.all.filter{ |item| !selected_ids.include?(item.id) }
     end
 

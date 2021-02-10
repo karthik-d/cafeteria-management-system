@@ -24,28 +24,76 @@ body {
 }
 
 .Menu__block {
-    background: #F1F3F4;
-    color: black;
-    margin: 20px 0px;
-    padding: 10px 20px;
+    display: flex;
     box-shadow: 0 2px 4px 0 #b5b8bd;
     transition: 0.3s;
+    width: 100%;
+    margin: 20px 0px;
 }
 
-.Menu__block:hover {
+.Menu__activate{
+    margin: 0px 0px;
+    width: 68%;
+}
+
+.Menu__edit{
+    background: #014462b0;
+    border: 0 0 0 2px;
+    width: 16%;
+}
+
+.Menu__delete{
+    background: #dc3c31b0;
+    border: 0 0 0 2px;
+    width: 16%;
+}
+
+.Menu__activateButton{
+    padding: 10px 20px;
+    text-align: left;
+    background: #F1F3F4;
+    color: black;
+    border: 1px transparent;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.Menu__activateButton:hover{
+    background-color: #b7dfb9;
+}
+
+.Menu__activate:hover, .Menu__edit:hover, .Menu__delete:hover {
     box-shadow: 0 4px 8px 0 #b5b8bd;
 }
 
-.Menu__activeBlock {
+.Menu__nameText {
+    padding: 10px 20px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.Menu__activeContent{
+    background: #66b366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Menu__active {
     background: #66b366;
     color: white;
 }
 
-.Menu__nameText {
-    font-weight: 400;
-    letter-spacing: 0.1px;
-    font-size: 14px;
-    line-height: 1.4;
+.Menu__activeText {
+    background: #66b366;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;    
+    padding: 0px 10px;
 }
 
 .MenuPage__addNew {

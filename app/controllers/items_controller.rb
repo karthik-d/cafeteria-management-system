@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
         )
         if(item.save)
             if(params[:source]=="new_menu_path")
-                session[:create_menu_items_selection].append(item)
+                session[:create_menu_items_selection][item.id.to_s] = item
                 redirect_to new_menu_path
             else
                 redirect_to items
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
         params[:item_id].each do |id|
             item = Item.find_by(id: id)
             if(item)
-                session[:create_menu_items_selection].append(item)
+                session[:create_menu_items_selection][item.id.to_s] = item
             end
         end
         redirect_to new_menu_path

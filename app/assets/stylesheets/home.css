@@ -1,0 +1,79 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+}
+
+.App__error {
+    margin-top: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    background: #f8d7da;
+    ;
+}
+
+.App__errorText {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8b1c24;
+    padding: 8px;
+}
+
+.App__info {
+    margin-top: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    background: #d1ecf1;
+    ;
+    ;
+}
+
+.App__infoText {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0c5484;
+    padding: 8px;
+}
+
+.App__hrline {
+    margin-bottom: 20px;
+}
+
+.App__header {
+    margin-bottom: 40px;
+}
+
+.App__headerTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.App__userText {
+    font-size: 16px;
+    font-weight: 600;
+    color: #453C52;
+    line-height: 1.4;
+    margin-right: 20px;
+}
+
+.App__signin, .App__signout {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    width: max-content;
+    color: white;
+    padding: 8px;
+}
+
+.App__signin {
+    background-color: #48BB78;
+}
+
+.App__signout {
+    background-color: #941a18;
+}

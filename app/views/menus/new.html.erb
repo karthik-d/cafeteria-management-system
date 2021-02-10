@@ -6,27 +6,35 @@
         <h2 class="CreateMenuPage__subtitle">Lets give this menu a name add some items</h1>
 
         <section class="CreateMenu__section">
-            <%= form_with(url: new_menu_path, method: "POST", class: "CreateMenu__form") do |create_menu_form| %>
+            <%= form_with(url: "/menus", method: "POST", class: "CreateMenu__form") do |create_menu_form| %>
 
                 <div class="CreateMenu__textField">
                     <%= create_menu_form.text_field(:name, class: "CreateMenu__name CreateMenu__input", placeholder: "Name") %>
                 </div>
 
-                <div class="CreateMenu__itemField">
-                    <%= button_tag("+ Existing Item", type: "button", class: "CreateMenu__addButton", :onclick => "showSelectItemForm()") %>
-                </div>
+                <section class="CreateMenu__selections">
+                    <% selected_items.each do |id,item| %>
+                        <div class="CreateMenu__selectedItem">
+                            <p> <%= item["name"] %> </p>
+                            <%= create_menu_form.number_field("items[#{id}]", class: "CreateMenu__price", placeholder: "Price") %>
+                        </div>
+                    <% end %>
+                </section>
 
-                <div class="CreateMenu__itemField">
-                    <%= button_tag("+ New Item", type: "button", class: "CreateMenu__addButton", :onclick => "showCreateItemForm()") %>
+                <div class="CreateMenu__submitField">
+                    <%= create_menu_form.submit("Create", class: "CreateMenuItem__submit", :onclick => "hideItemPopupForms()") %>
                 </div>
 
             <% end %>
-        </section>
 
-        <section class="CreateMenu__selections">
-            <% selected_items.each do |item| %>
-                <p> <%= item["name"] %> </p>
-            <% end %>
+            <div class="CreateMenu__itemField">
+                <%= button_tag("+ Existing Item", type: "button", class: "CreateMenu__addButton", :onclick => "showSelectItemForm()") %>
+            </div>
+
+            <div class="CreateMenu__itemField">
+                <%= button_tag("+ New Item", type: "button", class: "CreateMenu__addButton", :onclick => "showCreateItemForm()") %>
+            </div>
+
         </section>
 
     </section>
@@ -37,8 +45,8 @@
         <h3 class="PopupForm__title"> Select Items </h3>
 
         <%= form_with(url: "/items/select", method: "POST", class: "SelectMenuItem__form") do |menuitem_form| %>
-            
-            <% if !non_selected_items.length %>
+
+            <% if non_selected_items.length %>
                 <div class="SelectMenuItem__selectionField">
                     <%= menuitem_form.collection_check_boxes(:item_id, non_selected_items, :id, :name, class: "SelectMenuItem__selectionInput") %>
                 </div>

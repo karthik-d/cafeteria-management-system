@@ -20,12 +20,37 @@
             document.getElementById("selectMenuItemForm").style.display = "block";
         }
 
-        
+
     </script>
 
   </head>
 
   <body>
+
+      <section class="App__header">
+
+          <div class="App__hrline">
+              <hr />
+          </div>
+
+          <% if flash[:error] %>
+              <% flash[:error].each do |msg| %>
+                  <div class="App__error">
+                      <p class="App__errorText"> <%= msg %> </p>
+                  </div>
+              <% end %>
+          <% end %>
+
+          <% if flash[:info] %>
+              <% flash[:info].each do |msg| %>
+                  <div class="App__info">
+                      <p class="App__infoText"> <%= msg %> </p>
+                  </div>
+              <% end %>
+          <% end %>
+
+      </section>
+
     <%= yield %>
   </body>
 </html>

@@ -3,9 +3,30 @@
     <h1 class="MenusPage__title"> Available Menus </h1>
 
     <section class="MenuPage__listing">
-        <% Menu.all.each do |menu| %>
-            <div class="Menu__block <%= menu.is_active ? "Menu__activeBlock" : "" %>" >
-                <p class="Menu__nameText"> <%= menu.name %> </p>
+        <% Menu.all.order(:name).each do |menu| %>
+            <div class="Menu__block" >
+
+                <div class="Menu__activate" >
+                    <% if menu.is_active %>
+                        <span class="Menu__activeContent">
+                            <p class="Menu__nameText Menu__active"> <%= menu.name %> </p>
+                            <p class="Menu__activeText"> LIVE </p>
+                        </span>
+                    <% else %>
+                        <%= form_with(url: "/menus/#{menu.id}", method: "PUT") do |activation_form| %>
+                            <%= activation_form.button(menu.name, value: "activate", class: "Menu__activateButton", :onclick=>"this.form.submit()") %>
+                        <% end %>
+                    <% end %>
+                </div>
+
+                <div class="Menu__edit">
+                    <img src="">
+                </div>
+
+                <div class="Menu__delete">
+                    <img src="">
+                </div>
+
             </div>
         <% end %>
     </section>
