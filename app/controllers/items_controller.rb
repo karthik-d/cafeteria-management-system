@@ -12,12 +12,16 @@ class ItemsController < ApplicationController
             diet_type: params[:diet_type]
         )
         if(item.save)
-            if(params[:source]=="new_menu_path")
-                session[:create_menu_items_selection][item.id.to_s] = item
-                redirect_to new_menu_path
-            else
-                redirect_to items
-            end
+            session[:create_menu_items_selection][item.id.to_s] = item
+            helpers.add_info_flash("New item created")
+        else
+            helpers.add_error_flash(item.errors.full_messages)
+        end
+
+        if(params[:source]=="new_menu_path")
+            redirect_to new_menu_path
+        else
+            redirect_to items
         end
     end
 

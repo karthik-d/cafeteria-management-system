@@ -77,3 +77,63 @@ body {
 .App__signout {
     background-color: #941a18;
 }
+
+.HomePage{
+    width: 600px;
+    margin: 40px auto;
+}
+
+.HomePage__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.HomePage__auth {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.HomePage__authText {
+    font-size: 16px;
+    color: #453C52;
+    line-height: 1.4;
+    margin-left: 10px;
+}
+
+.HomePage__authLink {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #48BB78;
+    line-height: 1.4;
+    margin-left: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.HomePage__path {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.HomePage__pathText {
+    font-size: 16px;
+    color: #453C52;
+    line-height: 1.4;
+    margin-left: 10px;
+}
+
+.HomePage__pathLink {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #48BB78;
+    line-height: 1.4;
+    margin-left: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}

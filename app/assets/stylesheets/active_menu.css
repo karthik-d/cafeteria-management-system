@@ -1,0 +1,81 @@
+.ActiveMenuPage{
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+.ActiveMenusPage__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.ActiveMenuPage__listing {
+    margin-top: 40px;
+}
+
+.ActiveMenu__block {
+    display: flex;
+    transition: 0.3s;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.ActiveMenu__activate{
+    margin: 0px 0px;
+    width: 68%;
+}
+
+.ActiveMenu__edit{
+    background: #014462b0;
+    border: 0 0 0 2px;
+    width: 16%;
+}
+
+.ActiveMenu__delete{
+    background: #dc3c31b0;
+    border: 0 0 0 2px;
+    width: 16%;
+}
+
+.ActiveMenu__activate:hover, .ActiveMenu__edit:hover, .ActiveMenu__delete:hover {
+    box-shadow: 0 4px 8px 0 #b5b8bd;
+}
+
+.ActiveMenu__nameText {
+    padding: 4px 20px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.ActiveMenu__highlight{
+    background: #edeae4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ActiveMenu__active {
+    background: #66b366;
+    color: white;
+}
+
+.ActiveMenu__priceText {
+    background: inherit;
+    color: #014462b0;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0px 10px;
+}
+
+.ActiveMenu__descText{
+    background: inherit;
+    padding: 10px 20px;
+    color: #4a4948;
+    font-size: 12px;
+    font-weight: 400;
+}
