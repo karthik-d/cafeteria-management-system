@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         email: params[:email],
         mobile_num: params[:mobile],
         password: params[:password],
+        role: "customer"
       )
       # Login user upon successful signup
       if (user.save)

@@ -1,0 +1,12 @@
+<article class="NewClerkPage">
+
+    <h1 class="NewClerkPage__title">Enroll Billing Clerk</h1>
+    <h2 class="NewClerkPage__subtitle">Create login credentials for the new employee</h1>
+
+    <%= render partial: "/users/signupfields-section", locals:{
+        submission_url: enroll_employee_path,
+        signup_text: "Enroll",
+        signup_class: "NewClerk"
+    } %>
+
+</article>

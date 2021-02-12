@@ -1,0 +1,24 @@
+<article class="UsersListingPage">
+
+    <h1 class="UsersListing__title">Website Users</h1>
+    <h2 class="UsersListing__subtitle">Create, Manage and View your Cafetria users here</h2>
+
+    <section class="UsersListing__main">
+
+        <%= render partial: "userslist-section", locals: {
+            section_class: "CustomersList",
+            section_head: "Customers",
+            users: User.customers,
+            create_section: false
+        } %>
+
+        <%= render partial: "userslist-section", locals: {
+            section_class: "ClerksList",
+            section_head: "Billing Clerks",
+            users: User.billing_clerks,
+            create_section: true
+        } %>
+
+    </section>
+
+</article>

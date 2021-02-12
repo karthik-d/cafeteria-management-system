@@ -1,0 +1,18 @@
+<section class="<%= section_class %> UsersList">
+
+    <h3 class="UsersList__head"> <%= section_head %> </h3>
+
+    <% users.each do |user| %>
+        <section class="UsersList__block <%= section_class %>__block">
+            <p class="UsersList__nameText UsersList__text"> <%= user.name %> </p>
+            <p class="UsersList__emailText UsersList__text"> <%= user.email %> </p>
+        </section>
+    <% end %>
+
+    <% if create_section %>
+        <section class="UsersList__addNew">
+            <%= link_to("+ New #{section_head}", new_user_path, class: "UsersList__addLink") %>
+        </section>
+    <% end %>
+
+</section>

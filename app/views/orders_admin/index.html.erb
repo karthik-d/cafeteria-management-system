@@ -1,0 +1,19 @@
+<article class="OrdersAdminPage">
+
+        <h1 class="OrdersAdminPage__title"> Order History </h1>
+
+        <%= render partial: "orderslist-section", locals: {
+            editable: true,
+            section_head: "Pending Orders",
+            orders: @orders.pending,
+            shrinkable: false
+        } %>
+
+        <%= render partial: "orderslist-section", locals: {
+            editable: false,
+            section_head: "Past Orders",
+            orders: @orders.handled,
+            shrinkable: true
+        } %>
+
+</article>

@@ -1,6 +1,7 @@
 .SigninPage {
     font-family: 'Open Sans', sans-serif;
     max-width: 500px;
+    margin: 50px auto;
     background-color: white;
     padding-left: 10px;
     margin-top: 50px;

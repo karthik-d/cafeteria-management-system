@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  constraints RoleRoutingConstraint.new :customer do
+  constraints RoleRoutingConstraint.new :owner do
+      get "/users", to: "admins#index", as: :list_users
+      get "/users/new", to: "admins#new", as: :new_employee
+      post "/users", to: "admins#create", as: :enroll_employee
+  end
+
+  constraints RoleRoutingConstraint.new :billing_clerk do
+      get "/orders", to: "orders_admin#index", as: :list_orders
+      put "/orders/:id", to: "orders_admin#update", as: :mark_order_complete
+      delete "/orders/:id", to: "orders_admin#destroy", as: :delete_order
   end
 
   resources :menus

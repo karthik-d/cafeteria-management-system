@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     def new
       # If already logged in, redirect to home page
       if current_user
-        redirect_to menus_path
+        redirect_to root_path
       else
         render "new"
       end

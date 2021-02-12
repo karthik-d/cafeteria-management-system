@@ -71,9 +71,11 @@ ActiveRecord::Schema.define(version: 2021_02_12_084733) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.decimal "total_price"
-    t.datetime "created_at", default: "2021-02-12 08:50:21"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "archived_at"
+    t.bigint "archived_by"
     t.datetime "delivered_at"
+    t.bigint "delivered_by"
   end
 
   create_table "user_histories", force: :cascade do |t|

@@ -1,7 +1,6 @@
-body {
-    font-family: 'Open Sans', sans-serif;
-    max-width: 500px;
-    background-color: white;
+.SignupPage{
+    width: 500px;
+    margin: 40px auto;
 }
 
 .SignupPage__title{
@@ -16,7 +15,9 @@ body {
 }
 
 .Signup__section{
+    width: max-content;
     margin: 40px auto;
+    display: block;
 }
 
 .Signup__field{
@@ -40,7 +41,12 @@ body {
 }
 
 .Signup__submit{
-    width: 20%;
+    margin: 10px auto;
+    display: flex;
+}
+
+.Signup__submitButton{
+    width: 100%;
     margin: 10px auto;
     border: 1px transparent;
     border-radius: 4px;

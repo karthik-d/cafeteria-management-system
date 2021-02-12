@@ -1,0 +1,54 @@
+<section class="OrderPage__listing">
+
+    <div class="Order__section">
+        <h2 class="Order__sectionHead"> <%= section_head %> </h2>
+        <% #image_tag("expand-up.png", onclick: "this.parentNode.parentNode.style.display='none'") %>
+    </div>
+
+    <% if orders.count!=0 %>
+        <% orders.each do |order| %>
+            <section class="Order__block" >
+
+                <div class="Order__info <%= editable ? "" : "Order__infoFull" %>" >
+                    <span class="Order__infoHead">
+                        <p class="Order__idText"> Order #<%= order.id %> </p>
+                    </span>
+                    <p class="Order__customerNameText"> <%= order.user.name %> </p>
+                    <p class="Order__timestamp"> <%= order.placement_time %> </p>
+                    <p class="CartItemSelect__priceText"> Rs.<%= order.total_price %> </p>
+                </div>
+
+                <% if editable %>
+
+                    <div class="Order__markComplete">
+                        <%= form_with(url: "/orders/#{order.id}",
+                                    method: "PUT",
+                                    class: "Order__markCompleteForm",
+                                    id: "OrderCompleteForm_#{order.id}") do %>
+                            <%= image_submit_tag("delivered-check.png",
+                                                class: "Order__completeIcon",
+                                                form: "OrderCompleteForm_#{order.id}") %>
+                        <% end %>
+                    </div>
+
+                    <div class="Order__delete">
+                        <%= form_with(url: "/orders/#{order.id}",
+                                    method: "DELETE",
+                                    class: "Order__deleteForm",
+                                    id: "CartItemDeleteForm_#{order.id}") do %>
+                            <%= image_submit_tag("trash-can-outline.png",
+                                                class: "Order__deleteIcon",
+                                                form: "CartItemDeleteForm_#{order.id}") %>
+                        <% end %>
+                    </div>
+
+                <% end %>
+
+            </section>
+        <% end %>
+
+    <% else %>
+        <p class="Order__emptyText"> No orders to show </p>
+    <% end %>
+
+</section>

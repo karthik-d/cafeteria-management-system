@@ -1,41 +1,12 @@
-<article>
+<article class="SignupPage">
 
     <h1 class="SignupPage__title">Welcome!</h1>
     <h2 class="SignupPage__subtitle">Let's get to know you...</h1>
 
-    <section class="Signup__section">
-        <%= form_with(url: "/users", method: "POST", class: "Signup__form") do |signup_form| %>
-
-            <div class="Signup__field">
-                <%= signup_form.label(:firstname, "First Name", class: "Signup__label") %>
-                <%= signup_form.text_field(:firstname, class: "Signup__firstname Signup__input") %>
-            </div>
-
-            <div class="Signup__field">
-                <%= signup_form.label(:lastname, "Last Name", class: "Signup__label") %>
-                <%= signup_form.text_field(:lastname, class: "Signup__lastname Signup__input") %>
-            </div>
-
-            <div class="Signup__field">
-                <%= signup_form.label(:email, "Email ID", class: "Signup__label") %>
-                <%= signup_form.email_field(:email, class: "Signup__email Signup__input") %>
-            </div>
-
-            <div class="Signup__field">
-                <%= signup_form.label(:mobile, "Mobile No.", class: "Signup__label") %>
-                <%= signup_form.text_field(:mobile, class: "Signup__mobile Signup__input") %>
-            </div>
-
-            <div class="Signup__field">
-                <%= signup_form.label(:password, "Password", class: "Signup__label") %>
-                <%= signup_form.password_field(:password, class: "Signup__password Signup__input") %>
-            </div>
-
-            <div class="Signup__field">
-                <%= signup_form.submit("Sign Up", class: "Signup__submit") %>
-            </div>
-
-        <% end %>
-    </section>
+    <%= render partial: "signupfields-section", locals:{
+        submission_url: "/users",
+        signup_text: "Sign Up",
+        signup_class: "Signup"
+    } %>
 
 </article>

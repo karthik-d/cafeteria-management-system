@@ -1,0 +1,119 @@
+.UsersListingPage{
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.UsersListing__main{
+    display: flex;
+}
+
+.UsersListing__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.UsersListing__subtitle{
+    font-size: 18px;
+    color: #453C52;
+}
+
+.UsersListing__main{
+    margin-top: 50px;
+}
+
+.UsersList{
+    width: 50%;
+}
+
+.UsersList__head{
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 14px;
+    color: #6b6a66;
+    margin-bottom: 12px;
+}
+
+.UsersList__block {
+    display: block;
+    width: 80%;
+    box-shadow: 0 2px 4px 0 #b5b8bd;
+    transition: 0.3s;
+    margin: 20px 0px;
+    padding: 20px 16px;
+}
+
+.ClerksList__block{
+    background: #fbe1d5;
+}
+
+.CustomersList__block{
+    background: #e6f6fe;
+}
+
+.UsersList__block:hover {
+    box-shadow: 0 6px 12px 0 #b5b8bd;
+    transition: 0.1s;
+}
+
+.UsersList__text{
+    padding: 4px;
+}
+
+.UsersList__nameText{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.UsersList__emailText{
+    font-size: 14px;
+}
+
+.UsersList__addNew {
+    margin-top: 40px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: right;
+}
+
+.UsersList__addLink {
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    color: #66b366;
+    border-right: 0px;
+    border-left: auto;
+}
+
+.NewClerkPage{
+    width: 600px;
+    margin: 40px auto;
+}
+
+.NewClerkPage__title{
+    font-size: 24px;
+    color: #262927;
+    margin-bottom: 16px;
+}
+
+.NewClerkPage__subtitle{
+    font-size: 18px;
+    color: #453C52;
+    margin-left: 20px;
+}
+
+.NewClerk__submitButton{
+    width: 100%;
+    margin: 10px auto;
+    border: 1px transparent;
+    border-radius: 4px;
+    padding: 8px 16px;
+    background: #C3362B;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+}
