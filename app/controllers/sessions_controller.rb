@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         helpers.add_info_flash("Signed in successfully!")
         redirect_to root_path
       else
-        helpers.add_info_flash("Incorrect email or password. Please retry!")
+        helpers.add_error_flash("Incorrect email or password. Please retry!")
         redirect_to new_session_path
       end
     end
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     def destroy
       session[:current_user_id] = nil
       @current_user = nil
-      flash[:info] = Array("Signed out successfully!")
+      helpers.add_info_flash("Signed out! See you soon")
       redirect_to root_path
     end
 end

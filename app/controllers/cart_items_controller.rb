@@ -1,9 +1,21 @@
 class CartItemsController < ApplicationController
 
+    def index
+        cart = current_user.cart_item
+        @expired_items = cart.inactive_now.order(:created_at)
+        @cart_items = cart.active_now.order(:created_at)
+        if(@cart_items)
+            @total_price = @cart_items.reduce(0) { |total, item| total+=item.menu_item.price*item.quantity }.to_i
+        else
+            @total_price = 0
+        end
+        render "index"
+    end
+
     def new
-        menu = Menu.active_menus.first
+        menu = Menu.active_menu
         if(menu)
-            @menu_items = menu.menu_items
+            @menu_items = menu.menu_item
             render "new"
         else
             @menu_items = nil
@@ -20,7 +32,7 @@ class CartItemsController < ApplicationController
         if(!cart_item.save)
             helpers.add_info_flash(cart_item.errors.full_messages)
         end
-        redirect_to new_cart_item_path
+        redirect_back fallback_location: new_cart_item_path
     end
 
     def update
@@ -38,7 +50,7 @@ class CartItemsController < ApplicationController
                 helpers.add_info_flash(cart_item.errors.full_messages)
             end
         end
-        redirect_to new_cart_item_path
+        redirect_back fallback_location: new_cart_item_path
     end
 
     def destroy
@@ -46,7 +58,7 @@ class CartItemsController < ApplicationController
         if(cart_item)
             cart_item.destroy
         end
-        redirect_to new_cart_item_path
+        redirect_back fallback_location: new_cart_item_path
     end
 
 end

@@ -1,0 +1,74 @@
+<article class="ViewCartPage">
+
+    <h1 class="ViewCartPage__title"> Order Summary </h1>
+    <h3 class="ViewCartPage__subtitle"> Just one click away... </h3>
+
+    <section class="ViewCartPage__listing">
+        <% @cart_items.each do |cart_item| %>
+            <div class="ViewCart__block" >
+
+                <div class="ViewCart__info" >
+                        <span class="ViewCart__infoHead">
+                            <span class="ViewCart__infoLeft">
+                                <p class="ViewCart__nameText"> <%= cart_item.menu_item.item.name %> </p>
+                                <p class="ViewCart__multiplier"> X <%= cart_item.quantity %> </p>
+                            </span>
+                            <p class="ViewCart__priceText"> Rs.<%= cart_item.menu_item.price*cart_item.quantity %> </p>
+                        </span>
+                </div>
+
+                <div class="ViewCart__edit">
+                    <%= form_with(url: "/cart_items/#{cart_item.id}",
+                                method: "PUT",
+                                class: "ViewCart__modForm",
+                                id: "CartItemModifyForm_#{cart_item.id}") do %>
+                        <%= button_tag(image_tag("quantity-add-icon.png"),
+                                        class: "ViewCart__addQty",
+                                        form: "CartItemModifyForm_#{cart_item.id}",
+                                        name: "change",
+                                        value: "add",
+                                        type: "submit") %>
+                        <p class="ViewCart__qtyText"> <%= cart_item.quantity %> </p>
+                        <%= button_tag(image_tag("quantity-remove-icon.png"),
+                                        class: "ViewCart__remQty",
+                                        form: "CartItemModifyForm_#{cart_item.id}",
+                                        name: "change",
+                                        value: "remove",
+                                        type: "submit") %>
+                    <% end %>
+                </div>
+
+                <div class="ViewCart__delete">
+                    <%= form_with(url: "/cart_items/#{cart_item.id}",
+                                method: "DELETE",
+                                class: "ViewCartion__deleteForm",
+                                id: "CartItemDeleteForm_#{cart_item.id}") do %>
+                        <%= image_submit_tag("trash-can-outline.png",
+                                            class: "ViewCart__deleteIcon",
+                                            form: "CartItemDeleteForm_#{cart_item.id}") %>
+                    <% end %>
+                </div>
+
+            </div>
+        <% end %>
+
+        <%= form_with(url: "orders/", method: "POST") do |order_form| %>
+            <div class="ViewCart__total">
+                <label class="ViewCart__totalLabel">Grand Total: </label>
+                <span class="ViewCart__total">
+                    <p class="ViewCart__totalText"> Rs.</p>
+                    <%= order_form.text_field(:total_price,
+                                                class: "ViewCart__totalReadBox",
+                                                :readonly=>true, value: @total_price) %>
+                </span>
+            </div>
+
+            <div class="ViewCart__proceed">
+                <%= order_form.submit("Place Order", class: "ViewCart__proceedLink") %>
+            </div>
+        <% end %>
+
+    </section>
+
+
+</article>

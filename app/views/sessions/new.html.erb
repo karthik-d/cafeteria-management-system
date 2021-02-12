@@ -1,0 +1,26 @@
+<article class="SigninPage">
+
+    <h1 class="SigninPage__title">Welcome back!</h1>
+    <h2 class="SigninPage__subtitle">Just making sure its you...</h1>
+
+    <section class="Signin__section">
+        <%= form_with(url: login_auth_path, method: "POST", class: "Signin__form") do |signup_form| %>
+
+            <div class="Signin__field">
+                <%= signup_form.label(:email, "Email ID", class: "Signin__label") %>
+                <%= signup_form.email_field(:email, class: "Signin__email Signin__input") %>
+            </div>
+
+            <div class="Signin__field">
+                <%= signup_form.label(:password, "Password", class: "Signin__label") %>
+                <%= signup_form.password_field(:password, class: "Signin__password Signin__input") %>
+            </div>
+
+            <div class="Signin__field">
+                <%= signup_form.submit("Sign In", class: "Signin__submit") %>
+            </div>
+
+        <% end %>
+    </section>
+
+</article>

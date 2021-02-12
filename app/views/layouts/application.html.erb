@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CafeteriaManagementSystem</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>CafeteriaManagementSystem</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <script>
-        function showCreateItemForm() {
-            document.getElementById("selectMenuItemForm").style.display = "none";
-            document.getElementById("createMenuItemForm").style.display = "block";
-        }
+        <script>
+            function showCreateItemForm() {
+                document.getElementById("selectMenuItemForm").style.display = "none";
+                document.getElementById("createMenuItemForm").style.display = "block";
+            }
 
-        function showSelectItemForm() {
-            document.getElementById("createMenuItemForm").style.display = "none";
-            document.getElementById("selectMenuItemForm").style.display = "block";
-        }
+            function showSelectItemForm() {
+                document.getElementById("createMenuItemForm").style.display = "none";
+                document.getElementById("selectMenuItemForm").style.display = "block";
+            }
+        </script>
 
+    </head>
 
-    </script>
+    <body>
 
-  </head>
+        <section class="App__header">
 
-  <body>
+            <div class="App__headerTop">
+                <% if current_user %>
+                    <p class="App__userText">
+                        Hey there,
+                        <%= current_user.firstname %>
+                    </p>
+                    <div class="App__headerRight">
+                        <%= link_to(image_tag("cart.png"), cart_items_path, class: "App__cartLink") %>
+                        <%= link_to("Sign Out", destroy_session_path, method: "delete", class: "App__signout") %>
+                    </div>
+                <% else %>
+                    <p class="App__userText">
+                        Hey there, Guest</p>
+                <% end %>
+            </div>
 
-      <section class="App__header">
+            <div class="App__hrline">
+                <hr/>
+            </div>
 
-          <div class="App__hrline">
-              <hr />
-          </div>
+            <% if flash[:error] %>
+                <% flash[:error].each do |msg| %>
+                    <div class="App__error">
+                        <p class="App__errorText">
+                            <%= msg %>
+                        </p>
+                    </div>
+                <% end %>
+            <% end %>
 
-          <% if flash[:error] %>
-              <% flash[:error].each do |msg| %>
-                  <div class="App__error">
-                      <p class="App__errorText"> <%= msg %> </p>
-                  </div>
-              <% end %>
-          <% end %>
+            <% if flash[:info] %>
+                <% flash[:info].each do |msg| %>
+                    <div class="App__info">
+                        <p class="App__infoText">
+                            <%= msg %>
+                        </p>
+                    </div>
+                <% end %>
+            <% end %>
 
-          <% if flash[:info] %>
-              <% flash[:info].each do |msg| %>
-                  <div class="App__info">
-                      <p class="App__infoText"> <%= msg %> </p>
-                  </div>
-              <% end %>
-          <% end %>
+        </section>
+        <%= yield %>
 
-      </section>
-
-    <%= yield %>
-  </body>
+    </body>
 </html>

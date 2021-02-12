@@ -4,15 +4,17 @@ Rails.application.routes.draw do
   end
 
   resources :menus
+  resources :menu_items
 
   resources :items
   post "/items/select", to: "items#select", as: :select_items
 
-  resources :menu_items
-
   resources :users
 
   resources :cart_items
+
+  resources :orders
+  resources :order_items
 
   get "/", to: "home#index", as: :root
 

@@ -1,9 +1,9 @@
 class Menu < ApplicationRecord
-  has_many :menu_items
+  has_many :menu_item
   validates :name, presence: true, length: { minimum: 4 }, uniqueness: true
 
-  def self.active_menus
-      all.where(is_active: true)
+  def self.active_menu
+      all.find_by(is_active: true)
   end
 
   def self.deactivate_all

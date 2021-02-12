@@ -34,9 +34,6 @@
     margin: 0px 0px;
     width: 70%;
     background: #edeae4c0;
-    border-width: 4px 0px 4px 4px;
-    border-style: solid;
-    border-color: #c6c3bd;
 }
 
 .CartItemSelect__infoHead{
@@ -74,9 +71,6 @@
 
 .CartItemSelect__edit{
     background: #014462c0;
-    border-width:  4px 0px 4px 0px;
-    border-color: #014462c0;
-    border-style: solid;
     width: 20%;
     display: flex;
     align-items: center;
@@ -105,11 +99,153 @@
 }
 
 .CartItemSelect__createForm{
-    width: max-content;
+    width: 100%;
+    height: 100%;
     margin: 0px auto;
 }
 
 .CartItemSelect__addButton{
+    border: 1px transparent;
+    padding: 6px 16px;
+    background: #80c080;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+}
+
+.CartItemSelect__delete{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #dc3c31b0;
+    width: 10%;
+}
+
+.CartItemSelect__deleteIcon{
+    height: 100%;
+}
+
+.ViewCartPage{
+    max-width: 400px;
+    margin: 40px auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.ViewCartPage__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.ViewCartPage__subtitle{
+    font-size: 18px;
+    color: #453C52;
+}
+
+.ViewCartPage__listing {
+    margin-top: 40px;
+}
+
+.ViewCart__block {
+    display: flex;
+    transition: 0.3s;
+    width: 100%;
+    margin: 20px 0px;
+    align-items:stretch;
+}
+
+.ViewCart__info{
+    margin: 0px 0px;
+    width: 80%;
+    background: #edeae4c0;
+}
+
+.ViewCart__infoHead{
+    background: #edeae4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ViewCart__infoLeft{
+    display: flex;
+    align-items: center;
+}
+
+.ViewCart__multiplier{
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.ViewCart__nameText {
+    margin-top: 10px;
+    padding: 2px 20px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.ViewCart__priceText {
+    background: inherit;
+    color: #014462b0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 4px 30px;
+}
+
+.ViewCart__descText{
+    background: #edeae4;
+    padding: 10px 20px;
+    color: #014462b0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ViewCart__edit{
+    background: #014462c0;
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.ViewCart__modForm{
+    background: transparent;
+    width: 100%;
+    margin: 0px auto;
+    display: block;
+    text-align: center;
+}
+
+.ViewCart__qtyText{
+    text-align: center;
+    background-color: #edeae4;
+    padding: 10px;
+}
+
+.ViewCart__addQty, .ViewCart__remQty{
+    width: max-content;
+    margin: 0px auto;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.ViewCart__createForm{
+    width: max-content;
+    margin: 0px auto;
+}
+
+.ViewCart__addButton{
     border: 1px transparent;
     border-radius: 4px;
     padding: 6px 16px;
@@ -121,26 +257,71 @@
     margin: 0px auto;
 }
 
-.CartItemSelect__delete{
+.ViewCart__delete{
     display: flex;
     align-items: center;
     justify-content: space-around;
     background: #dc3c31b0;
-    border-width: 4px 4px 4px 0px;
-    border-color: #dc3c31;
-    border-style: solid;
     width: 10%;
 }
 
-.CartItemSelect__deleteIcon{
+.ViewCart__deleteIcon{
     height: 100%;
 }
 
-.CartItemSelect__block:hover {
-    box-shadow: 0 4px 8px 0 #b5b8bd;
+.ViewCart__total{
+    margin-top: 10px;
+    margin-left: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.CartItemSelect__active {
-    background: #66b366;
+.ViewCart__totalLabel{
+    font-weight: 600;
+    font-color: #5d6063;
+}
+
+.ViewCart__totalText{
+    color: #014462b0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ViewCart__totalReadBox{
+    font-family: inherit;
+    color: #014462b0;
+    font-size: 16px;
+    font-weight: 600;
+    background: transparent;
+    border: 0px;
+    outline: none;
+    width: 40px;
+}
+
+.ViewCart__total{
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    margin-left: 10px;
+    outline: none;
+}
+
+.ViewCart__proceed{
+    margin-top: 60px;
+    text-align: center;
+}
+
+.ViewCart__proceedLink{
+    text-decoration: none;
+    width: 100%;
+    margin: 10px auto;
+    border: 1px transparent;
+    border-radius: 2px;
+    padding: 10px 100px;
+    background: #48BB78;
     color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
 }

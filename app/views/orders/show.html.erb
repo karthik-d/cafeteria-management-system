@@ -1,0 +1,32 @@
+<article class="OrderInvoicePage">
+
+    <h1 class="OrderInvoicePage__title"> Invoice </h1>
+    <h3 class="OrderInvoicePage__subtitle"> Anticipate, while we prepare your order! </h3>
+
+    <section class="OrderInvoicePage__listing">
+        <% @order_items.each do |order_item| %>
+            <div class="OrderInvoice__block" >
+
+                <div class="OrderInvoice__info" >
+                        <span class="OrderInvoice__infoHead">
+                            <span class="OrderInvoice__infoLeft">
+                                <p class="OrderInvoice__nameText"> <%= order_item.menu_item.item.name %> </p>
+                                <p class="OrderInvoice__multiplier"> X <%= order_item.quantity %> </p>
+                            </span>
+                            <p class="OrderInvoice__priceText"> Rs.<%= order_item.menu_item.price*order_item.quantity %> </p>
+                        </span>
+                </div>
+
+            </div>
+        <% end %>
+
+        <div class="OrderInvoice__total">
+            <label class="OrderInvoice__totalLabel">Grand Total: </label>
+            <span class="OrderInvoice__total">
+                <p class="OrderInvoice__totalText"> Rs.<%= @order.total_price%> </p>
+            </span>
+        </div>
+
+    </section>
+
+</article>

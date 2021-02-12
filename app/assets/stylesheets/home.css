@@ -27,8 +27,6 @@ body {
     margin-right: auto;
     width: 95%;
     background: #d1ecf1;
-    ;
-    ;
 }
 
 .App__infoText {
@@ -50,6 +48,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.App__headerRight{
+    display: flex;
+    align-items: center;
+}
+
+.App__cartLink{
+    margin-right: 20px;
 }
 
 .App__userText {

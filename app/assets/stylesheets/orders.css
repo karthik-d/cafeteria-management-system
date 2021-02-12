@@ -1,0 +1,101 @@
+OrderInvoicePage{
+    max-width: 400px;
+    margin: 40px auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.OrderInvoicePage__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.OrderInvoicePage__subtitle{
+    font-size: 18px;
+    color: #453C52;
+}
+
+.OrderInvoicePage__listing {
+    margin-top: 40px;
+}
+
+.OrderInvoice__block {
+    display: flex;
+    transition: 0.3s;
+    width: 100%;
+    margin: 20px 0px;
+    align-items:stretch;
+}
+
+.OrderInvoice__info{
+    margin: 0px 0px;
+    width: 80%;
+    background: #edeae4c0;
+}
+
+.OrderInvoice__infoHead{
+    background: #edeae4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.OrderInvoice__infoLeft{
+    display: flex;
+    align-items: center;
+}
+
+.OrderInvoice__multiplier{
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.OrderInvoice__nameText {
+    margin-top: 10px;
+    padding: 2px 20px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.OrderInvoice__priceText {
+    background: inherit;
+    color: #014462b0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 4px 30px;
+}
+
+.OrderInvoice__total{
+    margin-top: 10px;
+    margin-left: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.OrderInvoice__totalLabel{
+    font-weight: 600;
+    font-color: #5d6063;
+}
+
+.OrderInvoice__totalText{
+    color: #014462b0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.OrderInvoice__total{
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    margin-left: 10px;
+    outline: none;
+}

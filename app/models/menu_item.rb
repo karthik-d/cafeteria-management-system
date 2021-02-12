@@ -2,6 +2,7 @@ class MenuItem < ApplicationRecord
     belongs_to :menu
     belongs_to :item
     has_many :cart_item
+    has_many :order_item
     validates :menu_id, presence: true
     validates :item_id, presence: true
     validates :price, numericality: {greater_than: 0}    # numericality doesn't allow nil
@@ -22,5 +23,13 @@ class MenuItem < ApplicationRecord
         else
             0
         end
+    end
+
+    def self.active_menu_items
+        all.where(menu_id: Menu.active_menu.id)
+    end
+
+    def self.active_menu_item_ids
+        all.where(menu_id: Menu.active_menu.id).select(:id)
     end
 end

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :cart_item
+    has_many :order
     has_secure_password(:password)
     validates :firstname, presence: true, length: {minimum: 4, maximum: 30}
     validates :email, presence: true, uniqueness: true
