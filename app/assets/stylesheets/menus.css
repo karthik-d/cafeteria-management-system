@@ -22,11 +22,16 @@
     transition: 0.3s;
     width: 100%;
     margin: 20px 0px;
+    height: 64px;
 }
 
 .Menu__activate{
     margin: 0px 0px;
     width: 68%;
+}
+
+.Menu__activateForm{
+  height: 100%;
 }
 
 .Menu__edit{
@@ -51,6 +56,7 @@
     font-weight: 400;
     font-size: 16px;
     font-family: inherit;
+    height: 100%;
 }
 
 .Menu__activeButton{
@@ -70,7 +76,7 @@
 }
 
 .Menu__nameText {
-    padding: 10px 20px;
+    padding: 10px 0px;
     font-weight: 400;
     letter-spacing: 0.1px;
     font-size: 16px;
@@ -84,17 +90,50 @@
     align-items: center;
 }
 
+.Menu__active {
+    background: inherit;
+}
+
 .Menu__activeText {
-    background: #66b366;
-    color: white;
+    background: inherit;
+    color: #ca3127;
     font-size: 12px;
     font-weight: 600;
     padding: 0px 10px;
 }
 
-.Menu__active {
-    background: inherit;
-    color: white;
+.Menu__nameText{
+  color: white;
+}
+
+.Menu__editLink{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Menu__editIcon{
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Menu__deleteLink{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Menu__deleteIcon{
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .MenuPage__addNew {
@@ -129,6 +168,8 @@
     font-size: 20px;
     font-weight: 600;
     color: #262927;
+    width: max-content;
+    margin: 0 auto;
     margin-bottom: 16px;
 }
 
@@ -143,29 +184,53 @@
 }
 
 .CreateMenu__textField {
-    width: inherit;
-    margin: 30px auto;
+    width: 70%;
+    margin: 0px auto;
+    margin-top: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.CreateMenu__label {
-    color: #453C52;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
 .CreateMenu__name {
-    font-weight: 400;
+    margin-bottom: 20px;
+    font-weight: 600;
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
-    padding: 0px 6px;
-    width: 200px;
-    color: #424242;
+    padding: 6px 4px;
+    width: 60%;
+    color: #424242ee;
     outline: 0;
-    border-width: 0 0 2px 0;
-    border-color: black;
+    border-width: 0 0 3px 0;
+    border-color: #000000;
+    text-align: center;
+}
+
+.CreateMenu__selections{
+  width: max-content;
+  margin: 0 auto;
+}
+
+.CreateMenu__selectedItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 6px 0;
+}
+
+.CreateMenu__selectedName{
+  font-weight: 600;
+  font-size: 14px;
+  color: #424242dd;
+  margin-right: 10px;
+}
+
+.CreateMenu__price{
+  width: 60px;
+  margin-left: 10px;
+  font-size: 15px;
+  border-width: 0 0 2px 0;
 }
 
 .CreateMenu__name:focus {
@@ -173,7 +238,7 @@
 }
 
 .CreateMenu__submit {
-    width: 20%;
+    width: 60%;
     margin: 10px auto;
     border: 1px transparent;
     border-radius: 4px;
@@ -183,6 +248,12 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 18px;
+}
+
+.CreateMenu__submitField {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .CreateMenu__itemField {
@@ -319,4 +390,189 @@
     color: #ffffff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+}
+
+.UpdateMenuPage {
+    display: flex;
+    width: 600px;
+    margin: 0px auto;
+}
+
+.UpdateMenuPage__main {
+    width: 100%;
+    margin: 20px auto;
+    position: static;
+    z-index: 1;
+}
+
+.UpdateMenuPage__colsSection{
+  margin-top: 30px;
+  display: flex;
+  border: 4px #325875aa;
+  border-radius: 10px;
+  border-style: solid;
+  width: 100%;
+}
+
+.UpdateMenuPage__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #262927;
+    width: max-content;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.UpdateMenuPage__subtitle {
+    font-size: 16px;
+    color: #453C52;
+    width: max-content;
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
+
+.UpdateMenu__section {
+    margin: 20px auto;
+    padding: 10px 40px;
+    width: 60%;
+}
+
+.UpdateMenu__textField {
+    width: inherit;
+    margin: 0px auto;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.UpdateMenu__name {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 6px 4px;
+    width: 60%;
+    color: #424242ee;
+    outline: 0;
+    border-width: 0 0 3px 0;
+    border-color: #000000;
+    text-align: center;
+}
+
+.UpdateMenu__name:focus {
+  border-color: #29B6F6;
+}
+
+.UpdateMenu__selectedItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 6px 0;
+}
+
+.UpdateMenu__selections{
+  width: max-content;
+  margin: 0 auto;
+}
+
+.UpdateMenu__selectedName{
+  font-weight: 600;
+  font-size: 14px;
+  color: #424242dd;
+}
+
+.UpdateMenu__price{
+  width: 60px;
+  margin-left: 10px;
+  font-size: 15px;
+  border-width: 0 0 2px 0;
+}
+
+.UpdateMenu__itemField {
+    display: flex;
+    justify-content: right;
+}
+
+.UpdateMenu__addButton {
+    font-weight: 600;
+    font-size: 16px;
+    color: #325875;
+    padding: 6px;
+    background: transparent;
+    border: 1px transparent;
+    outline: 0px;
+}
+
+.UpdateMenu__submitField {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.UpdateMenu__submit{
+    padding: 6px;
+    width: 60%;
+    margin: 20px auto;
+    background: #325875;
+    border: 1px transparent;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.UpdateMenu__existSection {
+    padding: 50px 40px;
+    transition: 0.3s;
+    width: 40%;
+    background: #325875aa;
+    color: #ffffff;
+    border-radius: 6px;
+}
+
+.UpdateMenu__existTitle {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.UpdateMenuPage__listing {
+    margin-top: 40px;
+}
+
+.UpdateMenu__existItem{
+  display: flex;
+  align-items: center;
+  margin: 10px 4px;
+}
+
+.UpdateMenu__existInfo{
+    margin: 0px auto;
+    width: 120px;
+}
+
+.UpdateMenu__existText {
+    padding: 0px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.UpdateMenu__delete{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #dc3c31b0;
+    width: 10%;
+}
+
+.UpdateMenu__deleteIcon{
+    height: 100%;
 }

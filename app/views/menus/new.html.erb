@@ -2,8 +2,8 @@
 
     <section class="CreateMenuPage__main">
 
-        <h1 class="CreateMenuPage__title">Create Menu</h1>
-        <h2 class="CreateMenuPage__subtitle">Lets give this menu a name add some items</h1>
+        <h1 class="CreateMenuPage__title">Create Category</h1>
+        <h2 class="CreateMenuPage__subtitle">Lets give this category a Name and some Items</h1>
 
         <section class="CreateMenu__section">
             <%= form_with(url: "/menus", method: "POST", class: "CreateMenu__form") do |create_menu_form| %>
@@ -13,16 +13,16 @@
                 </div>
 
                 <section class="CreateMenu__selections">
-                    <% selected_items.each do |id,item| %>
+                    <% selected_items(:create_menu_items_selection).each do |id,item| %>
                         <div class="CreateMenu__selectedItem">
-                            <p> <%= item["name"] %> </p>
+                            <p class="CreateMenu__selectedName"> <%= item["name"] %> </p>
                             <%= create_menu_form.number_field("items[#{id}]", class: "CreateMenu__price", placeholder: "Price") %>
                         </div>
                     <% end %>
                 </section>
 
                 <div class="CreateMenu__submitField">
-                    <%= create_menu_form.submit("Create", class: "CreateMenuItem__submit", :onclick => "hideItemPopupForms()") %>
+                    <%= create_menu_form.submit("Create", class: "CreateMenu__submit", :onclick => "hideItemPopupForms()") %>
                 </div>
 
             <% end %>
@@ -46,15 +46,21 @@
 
         <%= form_with(url: "/items/select", method: "POST", class: "SelectMenuItem__form") do |menuitem_form| %>
 
-            <% if non_selected_items.length %>
+            <% if non_selected_items(:create_menu_items_selection).length %>
                 <div class="SelectMenuItem__selectionField">
-                    <%= menuitem_form.collection_check_boxes(:item_id, non_selected_items, :id, :name, class: "SelectMenuItem__selectionInput") %>
+                    <%= menuitem_form.collection_check_boxes(:item_id,
+                                                            non_selected_items(:create_menu_items_selection),
+                                                            :id,
+                                                            :name,
+                                                            class: "SelectMenuItem__selectionInput") %>
                 </div>
             <% else %>
                 <div class="SelectMenuItem__info">
                     <p class="SelectMenuItem__infoText">No more items</p>
                 </div>
             <%end %>
+
+            <%= menuitem_form.hidden_field(:source, :value => "new_menu_path") %>
 
             <div class="SelectMenuItem__submitField">
                 <%= menuitem_form.submit("Select", class: "SelectMenuItem__submit") %>
@@ -79,12 +85,19 @@
 
             <div class="CreateMenuItem__textField">
                 <%= menuitem_form.label(:name, "Description", class: "CreateMenuItem__label") %>
-                <%= menuitem_form.text_area(:description, class: "CreateMenuItem__textInput CreateMenuItem__longTextInput", rows: "3", cols: "34") %>
+                <%= menuitem_form.text_area(:description,
+                                            class: "CreateMenuItem__textInput CreateMenuItem__longTextInput",
+                                            rows: "3",
+                                            cols: "34") %>
             </div>
 
             <div class="CreateMenuItem__selectionField">
                 <%= menuitem_form.label(:diet_type, "Diet Type", class: "CreateMenuItem__label") %>
-                <%= menuitem_form.collection_radio_buttons(:diet_type, %w(Veg Egg NonVeg), :downcase, :to_s, class: "CreateMenuItem__selectionInput") %>
+                <%= menuitem_form.collection_radio_buttons(:diet_type,
+                                                            %w(Veg Egg NonVeg),
+                                                            :downcase,
+                                                            :to_s,
+                                                            class: "CreateMenuItem__selectionInput") %>
             </div>
 
             <%= menuitem_form.hidden_field(:source, :value => "new_menu_path") %>

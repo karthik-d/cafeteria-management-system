@@ -4,10 +4,22 @@ class Item < ApplicationRecord
     validates :diet_type, presence: true
     validates_inclusion_of :diet_type, :in => %w(veg egg nonveg)
 
-    def self.not_selected_for_new_menu(selected_items)
+    def self.not_in_selection(selected_items)
+      # Selected items is a HASH in this case
+      if(selected_items.empty?)
+        all
+      else
         selected_ids = selected_items.keys.map(&:to_i)
-        #Item.all.filter{ |item| !selected_ids.include?(item.id) }
         all.where('id NOT IN (?)', selected_ids)
+      end
     end
 
+    def self.not_in_records(item_ids)
+      # Records is a valid ActiveRecord relation
+      if(item_ids)
+        all.where('id NOT IN (?)', item_ids)
+      else
+        all
+      end
+    end
 end

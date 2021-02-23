@@ -1,6 +1,6 @@
 <article class="MenuPage">
 
-    <h1 class="MenusPage__title"> Available Menus </h1>
+    <h1 class="MenusPage__title"> Item Categories </h1>
 
     <section class="MenuPage__listing">
         <% Menu.all.order(:name).each do |menu| %>
@@ -9,7 +9,7 @@
                 <div class="Menu__activate" >
 
                     <% if menu.is_active %>
-                        <%= form_with(url: "/menus/#{menu.id}", method: "PUT") do |activation_form| %>
+                        <%= form_with(url: "/menus/activate/#{menu.id}", method: "PUT", class: "Menu__activateForm") do |activation_form| %>
                             <%= content_tag(:button, class: "Menu__activateButton Menu__activeButton") do %>
                                 <span class="Menu__activeContent">
                                     <p class="Menu__nameText Menu__active"> <%= menu.name %> </p>
@@ -21,7 +21,7 @@
 
 
                     <% else %>
-                        <%= form_with(url: "/menus/#{menu.id}", method: "PUT") do |activation_form| %>
+                        <%= form_with(url: "/menus/activate/#{menu.id}", method: "PUT", class: "Menu__activateForm") do |activation_form| %>
                             <%= activation_form.button(menu.name, value: "activate", class: "Menu__activateButton", :onclick=>"this.form.submit()") %>
                         <% end %>
                     <% end %>
@@ -29,11 +29,16 @@
                 </div>
 
                 <div class="Menu__edit">
-                    <img src="">
+                    <%= link_to(image_tag("edit.png", class: "Menu__editIcon"),
+                                menu_path(menu.id),
+                                class: "Menu__editLink") %>
                 </div>
 
                 <div class="Menu__delete">
-                    <img src="">
+                  <%= link_to(image_tag("trash-can-outline.png", class: "Menu__deleteIcon"),
+                              "/menus/#{menu.id}",
+                              method: "DELETE",
+                              class: "Menu__deleteLink") %>
                 </div>
 
             </div>

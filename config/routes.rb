@@ -13,10 +13,13 @@ Rails.application.routes.draw do
   end
 
   resources :menus
+  put "/menus/activate/:id", to: "menus#activate", as: :activate_menu
+
   resources :menu_items
 
   resources :items
   post "/items/select", to: "items#select", as: :select_items
+  delete "/items/unselect/:id", to: "items#unselect", as: :unselect_item
 
   resources :users
 
@@ -30,6 +33,4 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: :new_session
   post "/login", to: "sessions#create", as: :login_auth
   delete "/logout", to: "sessions#destroy", as: :destroy_session
-
-
 end
