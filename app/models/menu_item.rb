@@ -26,10 +26,10 @@ class MenuItem < ApplicationRecord
     end
 
     def self.active_menu_items
-        all.where(menu_id: Menu.active_menu.id)
+        all.where(menu_id: Menu.active_menus.ids)
     end
 
     def self.active_menu_item_ids
-        all.where(menu_id: Menu.active_menu.id).select(:id)
+        all.where(menu_id: Menu.active_menus.ids).ids
     end
 end

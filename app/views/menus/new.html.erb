@@ -28,11 +28,11 @@
             <% end %>
 
             <div class="CreateMenu__itemField">
-                <%= button_tag("+ Existing Item", type: "button", class: "CreateMenu__addButton", :onclick => "showSelectItemForm()") %>
+                <%= button_tag("+ Existing Item", type: "button", class: "CreateMenu__addButton", :onclick => "toggleSelectItemForm()") %>
             </div>
 
             <div class="CreateMenu__itemField">
-                <%= button_tag("+ New Item", type: "button", class: "CreateMenu__addButton", :onclick => "showCreateItemForm()") %>
+                <%= button_tag("+ New Item", type: "button", class: "CreateMenu__addButton", :onclick => "toggleCreateItemForm()") %>
             </div>
 
         </section>

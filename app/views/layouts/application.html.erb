@@ -10,14 +10,26 @@
         <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
         <script>
-            function showCreateItemForm() {
+            function toggleCreateItemForm() {
                 document.getElementById("selectMenuItemForm").style.display = "none";
-                document.getElementById("createMenuItemForm").style.display = "block";
+                var create_elem = document.getElementById("createMenuItemForm")
+                if( create_elem.style.display=="block"){
+                    create_elem.style.display = "none";
+                }
+                else{
+                    create_elem.style.display = "block";
+                }
             }
 
-            function showSelectItemForm() {
+            function toggleSelectItemForm() {
                 document.getElementById("createMenuItemForm").style.display = "none";
-                document.getElementById("selectMenuItemForm").style.display = "block";
+                var select_elem = document.getElementById("selectMenuItemForm")
+                if( select_elem.style.display=="block"){
+                    select_elem.style.display = "none";
+                }
+                else{
+                    select_elem.style.display = "block";
+                }
             }
         </script>
 

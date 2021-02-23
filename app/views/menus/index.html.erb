@@ -7,16 +7,25 @@
             <div class="Menu__block" >
 
                 <div class="Menu__activate" >
+
                     <% if menu.is_active %>
-                        <span class="Menu__activeContent">
-                            <p class="Menu__nameText Menu__active"> <%= menu.name %> </p>
-                            <p class="Menu__activeText"> LIVE </p>
-                        </span>
+                        <%= form_with(url: "/menus/#{menu.id}", method: "PUT") do |activation_form| %>
+                            <%= content_tag(:button, class: "Menu__activateButton Menu__activeButton") do %>
+                                <span class="Menu__activeContent">
+                                    <p class="Menu__nameText Menu__active"> <%= menu.name %> </p>
+                                    <p class="Menu__activeText Menu__active"> LIVE </p>
+                                </span>
+                            <% end %>
+                        <% end %>
+
+
+
                     <% else %>
                         <%= form_with(url: "/menus/#{menu.id}", method: "PUT") do |activation_form| %>
                             <%= activation_form.button(menu.name, value: "activate", class: "Menu__activateButton", :onclick=>"this.form.submit()") %>
                         <% end %>
                     <% end %>
+
                 </div>
 
                 <div class="Menu__edit">

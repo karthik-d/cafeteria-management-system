@@ -53,8 +53,16 @@
     font-family: inherit;
 }
 
+.Menu__activeButton{
+    background: #66b366;
+}
+
 .Menu__activateButton:hover{
     background-color: #b7dfb9;
+}
+
+.Menu__activeButton:hover{
+    background: #a6a1a1;
 }
 
 .Menu__activate:hover, .Menu__edit:hover, .Menu__delete:hover {
@@ -70,15 +78,10 @@
 }
 
 .Menu__activeContent{
-    background: #66b366;
+    background: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.Menu__active {
-    background: #66b366;
-    color: white;
 }
 
 .Menu__activeText {
@@ -87,6 +90,11 @@
     font-size: 12px;
     font-weight: 600;
     padding: 0px 10px;
+}
+
+.Menu__active {
+    background: inherit;
+    color: white;
 }
 
 .MenuPage__addNew {

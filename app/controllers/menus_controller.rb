@@ -44,8 +44,7 @@ class MenusController < ApplicationController
       # UPDATE /menus/:id
       menu = Menu.find_by(id: params[:id])
       if(menu)
-          Menu.deactivate_all
-          menu.is_active = true;
+          menu.is_active = !menu.is_active;
           menu.save
       end
       redirect_to menus_path
