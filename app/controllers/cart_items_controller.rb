@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
   def new
     # Must be changed to render category wise
     # categories = Menu.active_menus
-    items = MenuItem.active_menu_items
+    menus = Menu.active_menus.order(:name)
 
     cart = current_user.cart_item
     @expired_items = cart.inactive_now.order(:created_at)
@@ -25,12 +25,12 @@ class CartItemsController < ApplicationController
       @total_price = 0
     end
 
-    if(items.empty?)
-        @menu_items = nil
+    if(menus.empty?)
+        @menus = nil
         helpers.add_info_flash("We are still cooking... Please come back later!")
         redirect_to root_path
     else
-        @menu_items = items
+        @menus = menus
         render "new"
     end
   end

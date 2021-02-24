@@ -33,11 +33,16 @@
 }
 
 .CartItemSelectPage__listing {
-    margin: 20px auto;
-    margin-top: 40px;
+    margin: 0 auto;
     margin-right: 40px;
-    padding: 10px 40px;
     width: 60%;
+}
+
+.CartItemSelect__menuName{
+  font-size: 14px;
+  font-weight: 600;
+  color: #453C52;
+  margin-top: 40px;
 }
 
 .CartItemSelect__block {
@@ -201,10 +206,6 @@
     margin-bottom: 20px;
     margin-top: 40px;
     text-align: center;
-}
-
-.CartItemSelectPage__listing {
-    margin-top: 40px;
 }
 
 .CartItemSelect__existItem{
