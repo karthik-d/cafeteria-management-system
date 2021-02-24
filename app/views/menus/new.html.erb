@@ -17,6 +17,10 @@
                         <div class="CreateMenu__selectedItem">
                             <p class="CreateMenu__selectedName"> <%= item["name"] %> </p>
                             <%= create_menu_form.number_field("items[#{id}]", class: "CreateMenu__price", placeholder: "Price") %>
+                            <%= link_to(image_tag("close-circle.png"),
+                                        unselect_item_path(id, source: "new_menu_path"),
+                                        method: "DELETE",
+                                        class: "CreateMenu__unselectLink") %>
                         </div>
                     <% end %>
                 </section>

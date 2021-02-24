@@ -15,6 +15,16 @@ class CartItemsController < ApplicationController
     # Must be changed to render category wise
     # categories = Menu.active_menus
     items = MenuItem.active_menu_items
+
+    cart = current_user.cart_item
+    @expired_items = cart.inactive_now.order(:created_at)
+    @cart_items = cart.active_now.order(:created_at)
+    if (@cart_items)
+      @total_price = @cart_items.reduce(0) { |total, item| total += item.menu_item.price * item.quantity }.to_i
+    else
+      @total_price = 0
+    end
+
     if(items.empty?)
         @menu_items = nil
         helpers.add_info_flash("We are still cooking... Please come back later!")

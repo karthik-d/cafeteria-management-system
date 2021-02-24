@@ -45,8 +45,8 @@ class MenusController < ApplicationController
                                    price: item_price)
           if (!menu_item.save)
             has_failed = true
+            session[:create_menu_items_selection].reject! { |key| key == item_id }
           end
-          session[:create_menu_items_selection].reject! { |key| key == item_id }
         end
         helpers.add_info_flash("New category '#{menu.name}' created")
       else
@@ -83,16 +83,19 @@ class MenusController < ApplicationController
                                      price: item_price)
             if (!menu_item.save)
               has_failed = true
+            else
+              session[:update_menu_items_selection].reject! { |key| key == item_id }
             end
-            session[:update_menu_items_selection].reject! { |key| key == item_id }
           end
           helpers.add_info_flash("Category '#{menu.name}' updated")
         end
 
         if has_failed
           helpers.add_error_flash("Some items could not be added. Price was empty")
+          redirect_back(fallback_location: root_path)
+        else
+          redirect_to menus_path
         end
-        redirect_to menus_path
       end
     else
       redirect_back(fallback_location: root_path)

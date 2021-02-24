@@ -224,6 +224,7 @@
   font-size: 14px;
   color: #424242dd;
   margin-right: 10px;
+  width: 100px;
 }
 
 .CreateMenu__price{
@@ -231,6 +232,10 @@
   margin-left: 10px;
   font-size: 15px;
   border-width: 0 0 2px 0;
+}
+
+.CreateMenu__unselectLink{
+  margin-left: 20px;
 }
 
 .CreateMenu__name:focus {
@@ -468,6 +473,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 240px;
   margin: 10px;
   padding: 6px 0;
 }
@@ -481,6 +487,7 @@
   font-weight: 600;
   font-size: 14px;
   color: #424242dd;
+  width: 100px;
 }
 
 .UpdateMenu__price{
@@ -488,6 +495,10 @@
   margin-left: 10px;
   font-size: 15px;
   border-width: 0 0 2px 0;
+}
+
+.UpdateMenu__unselectLink{
+  margin: 0px;
 }
 
 .UpdateMenu__itemField {

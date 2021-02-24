@@ -46,19 +46,14 @@
                   <section class="UpdateMenu__selections">
                       <% selected_items(:update_menu_items_selection).each do |id,item| %>
                           <div class="UpdateMenu__selectedItem">
-                              <%= form_with(url: "/items/unselect/#{id}",
-                                            method: "DELETE",
-                                            class: "UpdateMenu__unselectForm",
-                                            id: "UnselectForm_#{id}") do |unselect_form| %>
-                                <%= unselect_form.hidden_field(:source, :value => "update_menu_path") %>
-                                <%= image_submit_tag("cart.png",
-                                                    class: "UpdateMenu__unselectIcon",
-                                                    form: "UnselectForm_#{id}") %>
-                              <% end %>
                               <p class="UpdateMenu__selectedName"> <%= item["name"] %> </p>
                               <%= update_menu_form.number_field("items[#{id}]",
                                                                 class: "UpdateMenu__price",
                                                                 placeholder: "Price") %>
+                              <%= link_to(image_tag("close-circle.png"),
+                                          unselect_item_path(id, source: "update_menu_path"),
+                                          method: "DELETE",
+                                          class: "UpdateMenu__unselectLink") %>
                           </div>
                       <% end %>
                   </section>
