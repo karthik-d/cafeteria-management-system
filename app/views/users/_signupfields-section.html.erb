@@ -1,33 +1,62 @@
 <section class="Signup__section">
-    <%= form_with(url: submission_url, method: "POST", class: "Signup__form") do |signup_form| %>
+    <%= form_with(url: submission_url, method: http_method, class: "Signup__form") do |signup_form| %>
 
         <div class="Signup__field">
             <%= signup_form.label(:firstname, "First Name", class: "Signup__label") %>
-            <%= signup_form.text_field(:firstname, class: "Signup__firstname Signup__input") %>
+            <%= signup_form.text_field(:firstname,
+                                      class: "Signup__firstname Signup__input",
+                                      value: user_data ? user_data.firstname : nil ) %>
         </div>
 
         <div class="Signup__field">
             <%= signup_form.label(:lastname, "Last Name", class: "Signup__label") %>
-            <%= signup_form.text_field(:lastname, class: "Signup__lastname Signup__input") %>
+            <%= signup_form.text_field(:lastname,
+                                      class: "Signup__lastname Signup__input",
+                                      value: user_data ? user_data.lastname : nil) %>
         </div>
 
         <div class="Signup__field">
             <%= signup_form.label(:email, "Email ID", class: "Signup__label") %>
-            <%= signup_form.email_field(:email, class: "Signup__email Signup__input") %>
+            <%= signup_form.email_field(:email,
+                                        class: "Signup__email Signup__input",
+                                        value: user_data ? user_data.email : nil) %>
         </div>
+
+        <% if !customer_signup %>
+          <div class="Signup__field">
+              <%= signup_form.label(:email, "Role", class: "Signup__label") %>
+              <%= signup_form.collection_select(:role,
+                                          %w(billing_clerk owner),
+                                          :to_s,
+                                          :humanize,
+                                          {:selected => user_data ? user_data.role : nil },
+                                          class: "Signup__role Signup__input"
+                                           ) %>
+          </div>
+        <% end %>
 
         <div class="Signup__field">
             <%= signup_form.label(:mobile, "Mobile No.", class: "Signup__label") %>
-            <%= signup_form.text_field(:mobile, class: "Signup__mobile Signup__input") %>
+            <%= signup_form.text_field(:mobile,
+                                      class: "Signup__mobile Signup__input",
+                                      value: user_data ? user_data.mobile_num : nil) %>
         </div>
 
         <div class="Signup__field">
             <%= signup_form.label(:password, "Password", class: "Signup__label") %>
-            <%= signup_form.password_field(:password, class: "Signup__password Signup__input") %>
+
+            <% if user_data %>
+              <%= signup_form.password_field(:password,
+                                              class: "Signup__password Signup__input",
+                                              placeholder: "Leave Empty if No Change") %>
+            <% else %>
+              <%= signup_form.password_field(:password, class: "Signup__password Signup__input") %>
+            <% end %>
+
         </div>
 
         <div class="Signup__submit">
-            <%= signup_form.submit(signup_text, class: "#{signup_class}__submitButton") %>
+          <%= signup_form.submit(signup_text, class: "#{signup_class}__submitButton") %>
         </div>
 
     <% end %>

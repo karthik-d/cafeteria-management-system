@@ -1,7 +1,7 @@
 <article class="UsersListingPage">
 
     <h1 class="UsersListing__title">Website Users</h1>
-    <h2 class="UsersListing__subtitle">Create, Manage and View your Cafetria users here</h2>
+    <h2 class="UsersListing__subtitle">Create, Manage and View your Cafeteria users here</h2>
 
     <section class="UsersListing__main">
 
@@ -9,16 +9,27 @@
             section_class: "CustomersList",
             section_head: "Customers",
             users: User.customers,
-            create_section: false
+            update_section: false
         } %>
 
         <%= render partial: "userslist-section", locals: {
             section_class: "ClerksList",
             section_head: "Billing Clerks",
             users: User.billing_clerks,
-            create_section: true
+            update_section: true
         } %>
 
+        <%= render partial: "userslist-section", locals: {
+            section_class: "OwnersList",
+            section_head: "Owners",
+            users: User.owners.neglect(current_user),
+            update_section: true
+        } %>
+
+    </section>
+
+    <section class="UsersList__addNew">
+        <%= link_to("+ New Employee/Owner", new_user_path, class: "UsersList__addLink") %>
     </section>
 
 </article>

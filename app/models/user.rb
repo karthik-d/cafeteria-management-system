@@ -22,4 +22,16 @@ class User < ApplicationRecord
     def self.customers
         all.where(role: "customer")
     end
+
+    def self.owners
+      all.where(role: "owner")
+    end
+
+    def self.non_customers
+      all.where.not(role: "customers")
+    end
+
+    def self.neglect(exclusion)
+      all.where.not(id: exclusion.id)
+    end
 end

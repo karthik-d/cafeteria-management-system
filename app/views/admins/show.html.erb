@@ -1,0 +1,16 @@
+<!-- Applicable to OWNERS AS WELL -->
+<article class="EditClerkPage">
+
+    <h1 class="EditClerkPage__title">Update <%= @user.role.humanize.titleize %> </h1>
+    <h2 class="EditClerkPage__subtitle">Replace the fields with updated details</h1>
+
+    <%= render partial: "/users/signupfields-section", locals:{
+        submission_url: update_employee_path,
+        signup_text: "Update",
+        signup_class: "EditClerk",
+        customer_signup: false,
+        user_data: @user,
+        http_method: "PUT"
+    } %>
+
+</article>

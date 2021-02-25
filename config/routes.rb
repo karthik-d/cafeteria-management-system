@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       get "/users", to: "admins#index", as: :list_users
       get "/users/new", to: "admins#new", as: :new_employee
       post "/users", to: "admins#create", as: :enroll_employee
+      get "/users/:id", to: "admins#show", as: :edit_employee
+      put "/users/:id", to: "admins#update", as: :update_employee
+      delete "/users/:id", to:"admins#destroy", as: :destroy_employee
   end
 
   constraints RoleRoutingConstraint.new :billing_clerk do
