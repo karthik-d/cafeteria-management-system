@@ -47,9 +47,41 @@ class Order < ApplicationRecord
         all.where(delivered_at: nil).where(archived_at: nil)
     end
 
+    def self.delivered
+      all.where.not(delivered_at: nil)
+    end
+
+    def self.cancelled
+      all.where.not(archived_at: nil)
+    end
+
     def self.handled
         # Cannot cancel order after delivery!
         # Either delivered or archived
-        all.where.not(delivered_at: nil).or(all.where.not(archived_at: nil))
+        all.delivered.or(all.cancelled)
+    end
+
+    def self.after(date)
+      if(date.empty?)
+        all
+      else
+        all.where('created_at >= (?)', date)
+      end
+    end
+
+    def self.upto(date)
+      if(date.empty?)
+        all
+      else
+        all.where('created_at <= (?)', date)
+      end
+    end
+
+    def self.of_users(users)
+      if(users.empty?)
+        Order.none
+      else
+        all.where(user_id: users.ids)
+      end
     end
 end

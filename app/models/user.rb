@@ -36,6 +36,17 @@ class User < ApplicationRecord
     end
 
     def self.neglect(exclusion)
-      all.existinng.where.not(id: exclusion.id)
+      all.existing.where.not(id: exclusion.id)
+    end
+
+    def self.search(query)
+      if(query.empty?)
+        all
+      else
+        query = query.downcase
+        all.where('LOWER(firstname||lastname) LIKE (?)', "%#{query}%").or(
+          all.where('LOWER(mobile_num) LIKE (?)', "%#{query}%").or(
+          all.where('LOWER(email) LIKE (?)', "%#{query}%")))
+      end
     end
 end

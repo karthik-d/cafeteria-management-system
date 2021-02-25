@@ -1,5 +1,5 @@
 .OrdersAdminPage{
-    max-width: 600px;
+    max-width: 900px;
     margin: 40px auto;
     font-family: 'Open Sans', sans-serif;
     display: flex;
@@ -22,15 +22,71 @@
 }
 
 .OrdersAdminPage__filterBlock{
-  width: 20%;
-  border-width: 10px;
+  width: 30%;
+  border-width: 2px;
+  border-radius: 10px;
   border-style: solid;
-  margin-right: 20px;
-  margin-top: 80px;
+  border-color: #453C52;
+  margin-right: 60px;
+  margin-top: 120px;
+  padding: 10px 0px;
+}
+
+.OrderAdmin__filterField{
+    width: max-content;
+    margin: 20px auto;
+}
+
+.OrderAdmin__filterLabel{
+    font-weight: 600;
+    margin-left: 6px;
+    color: #453C52;
+    display: block;
+    font-size: 14px;
+    width: max-content;
+    margin-bottom: 2px;
+}
+
+.OrderAdmin__inputField{
+  margin: 4px 6px;
+  height: 20px;
+  width: 160px;
+  text-align: center;
+}
+
+.OrderAdmin__dateField{
+  font-family: inherit;
+}
+
+.OrderAdmin__statusField{
+  height: 30px;
+  width: 180px;
+  background: inherit;
+  text-decoration: none;
+  border: solid;
+  border-color: gray;
+  border-width: 0.5px;
+}
+
+.OrderAdmin__apply{
+  width: max-content;
+  margin: 0 auto;
+}
+
+.OrderAdmin__applyFilters{
+  width: 140px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+  border: 0px;
+  padding: 4px;
+  background: #453C52;
+  color: #ffffff;
+  margin: 20px;
 }
 
 .OrderAdminPage__mainBlock{
-  width: 80%;
+  width: 70%;
 }
 
 .OrdersAdminPage__listing {
@@ -66,6 +122,10 @@
     width: 60%;
     padding: 20px;
     background: #edeae4c0;
+}
+
+.Order__info:hover{
+    box-shadow: 0 2px 4px 0 #5f6361;
 }
 
 .Order__infoFull{
