@@ -22,7 +22,6 @@ class AdminsController < ApplicationController
     def create
         # POST /users as Owner
         # Creates new billing clerk
-        
         user = User.new(
             firstname: params[:firstname],
             lastname: params[:lastname],
@@ -49,6 +48,7 @@ class AdminsController < ApplicationController
         user.lastname = params[:lastname]
         user.email = params[:email]
         user.mobile_num = params[:mobile]
+        user.role = params[:role]
         if(!params[:password].empty?)
           user.password = params[:password]
         end
@@ -69,9 +69,9 @@ class AdminsController < ApplicationController
       # DELETE /users/:id as Owner
       user = User.non_customers.find_by(id: params[:id])
       if(user)
-        name = user.name
-        user.destroy
-        helpers.add_info_flash("Employee '#{name}' deleted")
+        user.archived_at = Time.now
+        user.save
+        helpers.add_info_flash("Employee '#{user.name}' deleted")
       end
       redirect_to list_users_path
     end

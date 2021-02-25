@@ -11,7 +11,7 @@ class RoleRoutingConstraint
 
         # If set, must be a valid user. Already authenticated before setting sessions hash
         if request.session[:current_user_id]
-            @current_user = User.find(request.session[:current_user_id])
+            @current_user = User.existing.find(request.session[:current_user_id])
         else
             return nil
         end
@@ -19,6 +19,7 @@ class RoleRoutingConstraint
 
     def matches?(request)
         user = current_user(request)
+        puts user.role
         user && user.check_role(@check_role)
     end
 end

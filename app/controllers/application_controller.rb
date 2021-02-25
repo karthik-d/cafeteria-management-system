@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   #before_action :require_access
 
   def require_access
-      puts controller_name
     unless current_user && "#{controller_name.
                                 camelize.
                                 singularize}Policy".constantize.
@@ -29,7 +28,7 @@ class ApplicationController < ActionController::Base
 
     # If set, must be a valid user. Already authenticated before setting sessions hash
     if session[:current_user_id]
-      @current_user = User.find(session[:current_user_id])
+      @current_user = User.existing.find(session[:current_user_id])
     else
       return nil
     end

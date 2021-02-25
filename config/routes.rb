@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   constraints RoleRoutingConstraint.new :billing_clerk do
       get "/orders", to: "orders_admin#index", as: :list_orders
+      get "/orders/:id", to: "orders_admin#show", as: :show_order
       put "/orders/:id", to: "orders_admin#update", as: :mark_order_complete
       delete "/orders/:id", to: "orders_admin#destroy", as: :delete_order
   end

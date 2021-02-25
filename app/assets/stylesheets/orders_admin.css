@@ -1,7 +1,10 @@
 .OrdersAdminPage{
-    max-width: 400px;
+    max-width: 600px;
     margin: 40px auto;
     font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
 }
 
 .OrdersAdminPage__title {
@@ -16,6 +19,18 @@
 .OrdersAdminPage__subtitle{
     font-size: 18px;
     color: #453C52;
+}
+
+.OrdersAdminPage__filterBlock{
+  width: 20%;
+  border-width: 10px;
+  border-style: solid;
+  margin-right: 20px;
+  margin-top: 80px;
+}
+
+.OrderAdminPage__mainBlock{
+  width: 80%;
 }
 
 .OrdersAdminPage__listing {
@@ -62,11 +77,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 600;
 }
 
 .Order__infoLeft{
     display: flex;
     align-items: center;
+}
+
+.Order__handleDate{
+  font-size: 14px;
+  color: #464746;
+  text-align: right;
+  padding: 2px;
+  font-weight: 400;
+}
+
+.Order__handleText{
+  font-size: 16px;
+  text-align: right;
+  padding: 2px;
+  font-weight: 600;
+}
+
+.Order__cancelText{
+  color: #dc3c31;
+}
+
+.Order__deliverText{
+  color: #80c080;
+}
+
+.Order__handleUser{
+  font-size: 14px;
+  color: #464746;
+  text-align: right;
+  padding: 2px;
+  font-weight: 400;
 }
 
 .Order__multiplier{
@@ -86,12 +133,15 @@
 }
 
 .Order__priceText {
-    background: inherit;
-    color: #014462b0;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 10px;
-    padding: 4px 30px;
+  background: inherit;
+  color: #014462b0;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 4px 0;
+  width: max-content;
+  margin-left: auto;
+  margin-right: 0px;
 }
 
 .Order__descText{
@@ -140,4 +190,124 @@
     margin-top: 10px;
     color: #767a77;
     padding: 10px;
+}
+
+.OrderAdminInvoicePage{
+    max-width: 500px;
+    margin: 40px auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.OrderAdminInvoicePage__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.OrderAdminInvoicePage__subtitle{
+    font-size: 18px;
+    color: #453C52;
+}
+
+.OrderAdminInvoicePage__subtitlePara{
+  padding: 4px;
+  font-size: 14px;
+}
+
+.OrderAdminInvoicePage__listing {
+    margin-top: 40px;
+}
+
+.OrderAdminInvoice__block {
+    display: flex;
+    transition: 0.3s;
+    width: 100%;
+    margin: 20px 0px;
+    align-items:stretch;
+}
+
+.OrderAdminInvoice__info{
+    margin: 0px 0px;
+    width: 80%;
+    background: #edeae4c0;
+}
+
+.Order__orderLink{
+  text-decoration: none;
+  color: inherit;
+}
+
+.OrderAdminInvoice__infoHead{
+    background: #edeae4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.OrderAdminInvoice__infoLeft{
+    display: flex;
+    align-items: center;
+}
+
+.OrderAdminInvoice__multiplier{
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.OrderAdminInvoice__nameText {
+    margin-top: 10px;
+    padding: 2px 20px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.OrderAdminInvoice__priceText {
+    background: inherit;
+    color: #014462b0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 4px 30px;
+}
+
+.OrderAdminInvoice__total{
+
+    margin-left: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.OrderAdminInvoice__totalLabel{
+    margin-top: 40px;
+    font-weight: 600;
+    font-color: #5d6063;
+}
+
+.OrderAdminInvoice__totalText{
+    margin-top: 40px;
+    color: #014462b0;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 60px;
+}
+
+.OrderAdminInvoice__total{
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    margin-left: 10px;
+    outline: none;
+}
+
+.boldText{
+  font-weight: 600;
+  margin-right: 4px;
 }

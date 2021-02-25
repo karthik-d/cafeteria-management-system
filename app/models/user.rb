@@ -7,31 +7,35 @@ class User < ApplicationRecord
     validates :mobile_num, length: {is: 10}, allow_blank: true
     validates_inclusion_of :role, :in => %w(customer billing_clerk owner)
 
-    def check_role(role)
-        role == role
+    def check_role(expected_role)
+        role.to_s == expected_role.to_s
     end
 
     def name
         lastname ? "#{firstname} #{lastname}" : firstname
     end
 
+    def self.existing
+      all.where(archived_at: nil)
+    end
+
     def self.billing_clerks
-        all.where(role: "billing_clerk")
+        all.existing.where(role: "billing_clerk")
     end
 
     def self.customers
-        all.where(role: "customer")
+        all.existing.where(role: "customer")
     end
 
     def self.owners
-      all.where(role: "owner")
+      all.existing.where(role: "owner")
     end
 
     def self.non_customers
-      all.where.not(role: "customers")
+      all.existing.where.not(role: "customers")
     end
 
     def self.neglect(exclusion)
-      all.where.not(id: exclusion.id)
+      all.existinng.where.not(id: exclusion.id)
     end
 end

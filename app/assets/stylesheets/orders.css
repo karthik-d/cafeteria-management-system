@@ -1,5 +1,5 @@
 .OrderInvoicePage{
-    max-width: 400px;
+    max-width: 500px;
     margin: 40px auto;
     font-family: 'Open Sans', sans-serif;
 }
@@ -74,7 +74,7 @@
 }
 
 .OrderInvoice__total{
-    margin-top: 10px;
+
     margin-left: 50%;
     display: flex;
     justify-content: flex-end;
@@ -82,14 +82,17 @@
 }
 
 .OrderInvoice__totalLabel{
+    margin-top: 40px;
     font-weight: 600;
     font-color: #5d6063;
 }
 
 .OrderInvoice__totalText{
+    margin-top: 40px;
     color: #014462b0;
     font-size: 16px;
     font-weight: 600;
+    margin-right: 60px;
 }
 
 .OrderInvoice__total{
@@ -98,4 +101,145 @@
     margin: 0px;
     margin-left: 10px;
     outline: none;
+}
+
+.OrdersCustomerPage{
+    max-width: 400px;
+    margin: 40px auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.OrdersCustomerPage__title {
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 20px;
+    color: #453C52;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.OrdersCustomerPage__subtitle{
+    font-size: 18px;
+    color: #453C52;
+}
+
+.OrdersCustomerPage__listing {
+    margin-top: 40px;
+}
+
+.OrderCustomer__section{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.OrderCustomer__sectionHead{
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    font-size: 14px;
+    color: #4a4f4b;
+    margin-bottom: 6px;
+    margin-top: 60px;
+}
+
+.OrderCustomer__block {
+    display: flex;
+    transition: 0.3s;
+    width: 100%;
+    margin: 30px 0px;
+    margin-top: 20px;
+    align-items:stretch;
+}
+
+.OrderCustomer__info{
+    margin: 0px 0px;
+    width: 80%;
+    padding: 20px;
+    background: #edeae4c0;
+}
+
+.OrderCustomer__orderLink{
+  text-decoration: none;
+  color: inherit;
+}
+
+.OrderCustomer__infoPast{
+  width: 100%;
+}
+
+.OrderCustomer__infoFull{
+    width: 100%;
+}
+
+.OrderCustomer__infoHead{
+  background: #edeae4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.OrderCustomer__infoLeft{
+    display: flex;
+    align-items: center;
+}
+
+.OrderCustomer__multiplier{
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.OrderCustomer__dateText {
+    margin-top: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.OrderCustomer__priceText {
+    background: inherit;
+    color: #014462b0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 4px 0;
+    width: max-content;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.OrderCustomer__descText{
+    background: #edeae4;
+    padding: 10px 20px;
+    color: #014462b0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.OrderCustomer__delete{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #dc3c31b0;
+    width: 20%;
+}
+
+.OrderCustomer__delete:hover{
+    box-shadow: 0 2px 4px 0 #dc3c31b0;
+}
+
+.OrderCustomer__deleteIcon{
+    height: 100%;
+}
+
+.OrderCustomer__emptyText{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    color: #767a77;
+    padding: 10px;
 }

@@ -1,44 +1,50 @@
-<section class="OrderPage__listing">
+<section class="OrderCustomerPage__listing">
 
-    <h2 class="Order__sectionHead"> <%= section_head %> </h2>
+    <h2 class="OrderCustomer__sectionHead"> <%= section_head %> </h2>
 
-    <% orders.each do |order| %>
-        <section class="Order__block" >
+    <% if !orders.empty? %>
+      <% orders.each do |order| %>
+          <section class="OrderCustomer__block" >
 
-            <div class="Order__info" >
-                <span class="Order__infoHead">
-                    <p class="Order__idText"> #<%= order.id %> </p>
-                </span>
-                <p class="Order__customerNameText"> <%= order.user.name %> </p>
-                <p class="CartItemSelect__priceText"> Rs.<%= order.total_price %> </p>
-            </div>
+              <div class="OrderCustomer__info <%= editable ? "" : "OrderCustomer__infoPast" %>" >
+                <a href="<%= order_path(order.id) %>" class="OrderCustomer__orderLink">
+                  <span class="OrderCustomer__infoHead">
+                      <p class="OrderCustomer__idText"> Order #<%= order.id %> </p>
+                      <div class="Order__handleInfo">
+                        <% if !editable %>
+                          <p class="Order__handleText <%= order.cancelled? ? "Order__cancelText" : "Order__deliverText"  %>">
+                            <%= order.cancelled? ? "CANCELLED" : "DELIVERED"  %>
+                          </p>
+                          <p class="Order__handleUser"> by <%= order.handle_user.role.humanize %> </p>
+                          <p class="Order__handleDate"> at <%= order.handle_time %> </p>
+                        <% end %>
+                      </div>
+                  </span>
+                  <p class="OrderCustomer__dateText"> <%= editable ? order.created_at.to_s(:short) :  order.created_at.to_s(:long) %> </p>
+                  <p class="OrderCustomer__priceText"> Rs.<%= order.total_price %> </p>
+                </a>
+              </div>
 
-            <% if editable %>
+              <% if editable %>
 
-                <div class="Order__markComplete">
-                    <%= form_with(url: "/orders/#{order.id}",
-                                method: "PUT",
-                                class: "Order__markCopleteForm",
-                                id: "OrderCompleteForm_#{order.id}") do %>
-                        <%= image_submit_tag("delivered-check.png",
-                                            class: "Order__completeIcon",
-                                            form: "CartItemDeleteForm_#{order.id}") %>
-                    <% end %>
-                </div>
+                  <div class="OrderCustomer__delete">
+                      <%= form_with(url: "/orders/#{order.id}",
+                                  method: "DELETE",
+                                  class: "OrderCustomer__deleteForm",
+                                  id: "OrderCustomerDeleteForm_#{order.id}") do %>
+                          <%= image_submit_tag("cancel.png",
+                                              class: "OrderCustomer__deleteIcon",
+                                              form: "OrderCustomerDeleteForm_#{order.id}") %>
+                      <% end %>
+                  </div>
 
-                <div class="Order__delete">
-                    <%= form_with(url: "/cart_items/#{order.id}",
-                                method: "DELETE",
-                                class: "Order__deleteForm",
-                                id: "CartItemDeleteForm_#{order.id}") do %>
-                        <%= image_submit_tag("trash-can-outline.png",
-                                            class: "Order__deleteIcon",
-                                            form: "CartItemDeleteForm_#{oder.id}") %>
-                    <% end %>
-                </div>
+              <% end %>
 
-            <% end %>
+          </section>
+      <% end %>
 
-        </section>
+    <% else %>
+      <p class="OrderCustomer__emptyText"> No orders to show </p>
     <% end %>
+
 </section>

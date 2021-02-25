@@ -1,22 +1,18 @@
-<article class="OrdersPage">
+<article class="OrdersCustomerPage">
 
-        <h1 class="OrdersPage__title"> Order History </h1>
+        <h1 class="OrdersCustomerPage__title"> Order History </h1>
 
-        <% render partial: "orderslist-section", locals: {
+        <%= render partial: "orders/orderslist-section", locals: {
             editable: true,
             section_head: "Pending Orders",
             orders: @orders.pending,
             shrinkable: false
         } %>
 
-        <% render partial: "orderslist-section", locals: {
+        <%= render partial: "orders/orderslist-section", locals: {
             editable: false,
             section_head: "Past Orders",
             orders: @orders.handled,
             shrinkable: true
         } %>
-
-        <section class="OrderPage__addNew">
-            <%= link_to("+ Add a new menu", new_menu_path, class: "OrderPage__addLink") %>
-        </section>
 </article>

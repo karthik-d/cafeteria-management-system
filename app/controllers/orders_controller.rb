@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
+  # Renders to customer users
 
     def index
-        render "index"
+      @orders = current_user.order.order(created_at: :DESC)
+      render "index"
     end
 
     def new
@@ -51,7 +53,19 @@ class OrdersController < ApplicationController
             @order_items = @order.order_item
             render "show"
         else
-            redirect_to root_path
+            redirect_to orders_path
         end
     end
+
+    def destroy
+      order = current_user.order.find_by(id: params[:id])
+      if(order)
+        order.archived_at = Time.now
+        order.archived_by = current_user.id
+        order.save
+        helpers.add_info_flash("Order ##{params[:id]} cancelled")
+      end
+      redirect_to orders_path
+    end
+
 end

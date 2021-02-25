@@ -1,0 +1,45 @@
+<article class="OrderAdminInvoicePage">
+
+    <h1 class="OrderAdminInvoicePage__title"> Order Invoice </h1>
+    <h3 class="OrderAdminInvoicePage__subtitle">
+      <% if @order.cancelled? %>
+        <p class=OrderAdminInvoicePage__subtitlePara>This order was <span class="boldText">cancelled</span> on <%= @order.handle_date %><p>
+        <p class=OrderAdminInvoicePage__subtitlePara><%= "by the #{@order.handle_user.role.humanize}" %></p>
+        <p class=OrderAdminInvoicePage__subtitlePara><span class="boldText">Billing Clerk:</span><%= @order.handle_user.name %></p>
+        <p class=OrderAdminInvoicePage__subtitlePara><span class="boldText">Customer:</span><%= @order.user.name %></p>
+      <% elsif @order.delivered? %>
+        <p class=OrderAdminInvoicePage__subtitlePara>This order was <span class="boldText">delivered</span> on <%= @order.handle_date %></p>
+        <p class=OrderAdminInvoicePage__subtitlePara><span class="boldText">Billing Clerk:</span><%= @order.handle_user.name %></p>
+        <p class=OrderAdminInvoicePage__subtitlePara><span class="boldText">Customer:</span><%= @order.user.name %></p>
+      <% else %>
+        This order needs to be delivered
+      <% end %>
+    </h3>
+
+    <section class="OrderAdminInvoicePage__listing">
+        <% @order_items.each do |order_item| %>
+            <div class="OrderAdminInvoice__block" >
+
+                <div class="OrderAdminInvoice__info" >
+                        <span class="OrderAdminInvoice__infoHead">
+                            <span class="OrderAdminInvoice__infoLeft">
+                                <p class="OrderAdminInvoice__nameText"> <%= order_item.menu_item.item.name %> </p>
+                                <p class="OrderAdminInvoice__multiplier"> X <%= order_item.quantity %> </p>
+                            </span>
+                            <p class="OrderAdminInvoice__priceText"> Rs.<%= order_item.menu_item.price*order_item.quantity %> </p>
+                        </span>
+                </div>
+
+            </div>
+        <% end %>
+
+        <div class="OrderAdminInvoice__total">
+            <label class="OrderAdminInvoice__totalLabel">Grand Total: </label>
+            <span class="OrderAdminInvoice__total">
+                <p class="OrderAdminInvoice__totalText"> Rs.<%= @order.total_price%> </p>
+            </span>
+        </div>
+
+    </section>
+
+</article>
