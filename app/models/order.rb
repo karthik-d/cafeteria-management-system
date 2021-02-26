@@ -55,6 +55,10 @@ class Order < ApplicationRecord
       all.where.not(archived_at: nil)
     end
 
+    def self.walk_in
+      all.where(user_id: User.walkin_customer.id)
+    end
+
     def self.handled
         # Cannot cancel order after delivery!
         # Either delivered or archived

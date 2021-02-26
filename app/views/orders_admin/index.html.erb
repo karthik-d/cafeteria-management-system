@@ -27,16 +27,18 @@
                                             value: defined?(@search_query) ? @search_query : nil) %>
             </div>
 
-            <div class="OrderAdmin__filterField">
-              <%= filter_form.label(:status, "Order Status", class: "OrderAdmin__filterLabel") %>
-              <%= filter_form.collection_select(:status,
-                                                %w(pending cancelled delivered all),
-                                                :to_s,
-                                                :humanize,
-                                                {:selected => defined?(@status) ? @status: "all"},
-                                                class: "OrderAdmin__statusField OrderAdmin__inputField"
-                                                 ) %>
-            </div>
+            <% if current_user.check_role("owner") %>
+              <div class="OrderAdmin__filterField">
+                <%= filter_form.label(:status, "Order Status", class: "OrderAdmin__filterLabel") %>
+                <%= filter_form.collection_select(:status,
+                                                  %w(pending cancelled delivered walk_in all),
+                                                  :to_s,
+                                                  :humanize,
+                                                  {:selected => defined?(@status) ? @status: "all"},
+                                                  class: "OrderAdmin__statusField OrderAdmin__inputField"
+                                                   ) %>
+              </div>
+            <% end %>
 
             <div class="OrderAdmin__apply">
               <%= filter_form.submit("FILTER", class: "OrderAdmin__applyFilters") %>

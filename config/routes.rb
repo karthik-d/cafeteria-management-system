@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       put "/orders/:id", to: "orders_admin#update", as: :mark_order_complete_admin
       delete "/orders/:id", to: "orders_admin#destroy", as: :delete_order_admin
       post "/orders/search", to: "orders_admin#search", as: :search_orders_admin
+
   end
 
   constraints RoleRoutingConstraint.new :billing_clerk do
@@ -21,6 +22,13 @@ Rails.application.routes.draw do
       get "/orders/:id", to: "orders_admin#show", as: :show_order
       put "/orders/:id", to: "orders_admin#update", as: :mark_order_complete
       delete "/orders/:id", to: "orders_admin#destroy", as: :delete_order
+      post "/orders/search", to: "orders_admin#search", as: :search_orders
+
+      get "/walkin_order", to: "cart_items#index", as: :view_walkin_order, defaults: { order_type: "walkin" }
+      get "/walkin_order/new", to: "cart_items#new", as: :new_walkin_item, defaults: { order_type: "walkin" }
+      post "/walkin_order", to: "cart_items#create", as: :create_walkin_item, defaults: { order_type: "walkin" }
+      put "/walkin_order", to: "cart_items#update", as: :modify_walkin_item, defaults: { order_type: "walkin" }
+      delete "/walkin_order", to: "cart_items#destroy", as: :delete_walkin_item, defaults: { order_type: "walkin" }
   end
 
   resources :menus

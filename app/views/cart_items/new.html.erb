@@ -49,7 +49,7 @@
           <% if !menu.menu_item.empty? %>
 
             <p class="CartItemSelect__menuName"> <%= menu.name %> </p>
-            
+
             <% menu.menu_item.each do |menu_item| %>
                 <div class="CartItemSelect__block" >
 
@@ -61,10 +61,10 @@
                             <p class="CartItemSelect__descText"> <%= menu_item.item.description %> </p>
                     </div>
 
-                    <div class="CartItemSelect__edit <%= menu_item.cart_id_for_user(current_user) ? "" : "CartItemSelect__editNoDel" %>" >
+                    <div class="CartItemSelect__edit <%= menu_item.cart_id_for_user(@order_user) ? "" : "CartItemSelect__editNoDel" %>" >
 
-                        <% if menu_item.cart_id_for_user(current_user) %>
-                            <%= form_with(url: "/cart_items/#{menu_item.cart_id_for_user(current_user)}",
+                        <% if menu_item.cart_id_for_user(@order_user) %>
+                            <%= form_with(url: "/cart_items/#{menu_item.cart_id_for_user(@order_user)}",
                                         method: "PUT",
                                         class: "CartItemSelect__modForm",
                                         id: "CartItemModifyForm_#{menu_item.id}") do %>
@@ -74,7 +74,7 @@
                                                 name: "change",
                                                 value: "add",
                                                 type: "submit") %>
-                                <p class="CartItemSelect__qtyText"> <%= menu_item.quantity_for_user(current_user) %> </p>
+                                <p class="CartItemSelect__qtyText"> <%= menu_item.quantity_for_user(@order_user) %> </p>
                                 <%= button_tag(image_tag("quantity-remove-icon.png"),
                                                 class: "CartItemSelect__remQty",
                                                 form: "CartItemModifyForm_#{menu_item.id}",
@@ -99,9 +99,9 @@
                         <% end %>
                     </div>
 
-                    <% if menu_item.cart_id_for_user(current_user) %>
+                    <% if menu_item.cart_id_for_user(@order_user) %>
                         <div class="CartItemSelect__delete">
-                            <%= form_with(url: "/cart_items/#{menu_item.cart_id_for_user(current_user)}",
+                            <%= form_with(url: "/cart_items/#{menu_item.cart_id_for_user(@order_user)}",
                                         method: "DELETE",
                                         class: "CartItemSelection__deleteForm",
                                         id: "CartItemDeleteForm_#{menu_item.id}") do %>

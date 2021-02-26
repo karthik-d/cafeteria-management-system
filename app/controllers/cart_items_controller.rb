@@ -1,6 +1,16 @@
 class CartItemsController < ApplicationController
+  before_action :set_user
+
+  def set_user
+    if current_user.check_role("billing_clerk")
+      @order_user = User.walkin_customer
+    else
+      @order_user = current_user
+    end
+  end
+
   def index
-    cart = current_user.cart_item
+    cart = @order_user.cart_item
     @expired_items = cart.inactive_now.order(:created_at)
     @cart_items = cart.active_now.order(:created_at)
     if (@cart_items)
@@ -16,7 +26,7 @@ class CartItemsController < ApplicationController
     # categories = Menu.active_menus
     menus = Menu.active_menus.order(:name)
 
-    cart = current_user.cart_item
+    cart = @order_user.cart_item
     @expired_items = cart.inactive_now.order(:created_at)
     @cart_items = cart.active_now.order(:created_at)
     if (@cart_items)
@@ -37,7 +47,7 @@ class CartItemsController < ApplicationController
 
   def create
     cart_item = CartItem.new(
-      user_id: current_user.id,
+      user_id: @order_user.id,
       menu_item_id: params[:menu_id],
       quantity: 1,
     )
@@ -48,7 +58,7 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    cart_item = current_user.cart_item.find_by(id: params[:id])
+    cart_item = @order_user.cart_item.find_by(id: params[:id])
     if (cart_item)
       if (params[:change].eql?("add"))
         cart_item.quantity += 1
@@ -66,7 +76,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = current_user.cart_item.find_by(id: params[:id])
+    cart_item = @order_user.cart_item.find_by(id: params[:id])
     if (cart_item)
       cart_item.destroy
     end

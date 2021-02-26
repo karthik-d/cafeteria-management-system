@@ -44,9 +44,13 @@ class User < ApplicationRecord
         all
       else
         query = query.downcase
-        all.where('LOWER(firstname||lastname) LIKE (?)', "%#{query}%").or(
+        all.where('LOWER(CONCAT(firstname, lastname)) LIKE (?)', "%#{query}%").or(
           all.where('LOWER(mobile_num) LIKE (?)', "%#{query}%").or(
           all.where('LOWER(email) LIKE (?)', "%#{query}%")))
       end
+    end
+
+    def self.walkin_customer
+      User.find_by(firstname: "Walk-In")
     end
 end
