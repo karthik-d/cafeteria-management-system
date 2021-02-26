@@ -1,18 +1,59 @@
 <article class="OrdersCustomerPage">
+  <section class="OrdersAdminPage__filterBlock">
 
-        <h1 class="OrdersCustomerPage__title"> Order History </h1>
+    <%= form_with(url: "/orders/search", method: "POST", class: "OrderAdmin__filterForm") do |filter_form| %>
 
-        <%= render partial: "orders/orderslist-section", locals: {
-            editable: true,
-            section_head: "Pending Orders",
-            orders: @orders.pending,
-            shrinkable: false
-        } %>
+      <div class="OrderAdmin__filterField">
+          <%= filter_form.label(:start_date, "From", class: "OrderAdmin__filterLabel") %>
+          <%= filter_form.date_field(:start_date,
+                                    class: "OrderAdmin__dateField OrderAdmin__inputField",
+                                    max: Date.today,
+                                    value: defined?(@start_date) ? @start_date : nil) %>
+      </div>
 
-        <%= render partial: "orders/orderslist-section", locals: {
-            editable: false,
-            section_head: "Past Orders",
-            orders: @orders.handled,
-            shrinkable: true
-        } %>
+      <div class="OrderAdmin__filterField">
+          <%= filter_form.label(:end_date, "Upto", class: "OrderAdmin__filterLabel") %>
+          <%= filter_form.date_field(:end_date,
+                                    class: "OrderAdmin__dateField OrderAdmin__inputField",
+                                    max: Date.today,
+                                    value: defined?(@end_date) ? @end_date : nil) %>
+      </div>
+
+      <div class="OrderAdmin__filterField">
+        <%= filter_form.label(:status, "Order Status", class: "OrderAdmin__filterLabel") %>
+        <%= filter_form.collection_select(:status,
+                                          %w(pending cancelled delivered all),
+                                          :to_s,
+                                          :humanize,
+                                          {:selected => defined?(@status) ? @status: "all"},
+                                          class: "OrderAdmin__statusField OrderAdmin__inputField"
+                                           ) %>
+      </div>
+
+      <div class="OrderAdmin__apply">
+        <%= filter_form.submit("FILTER", class: "OrderAdmin__applyFilters") %>
+      </div>
+
+    <% end %>
+  </section>
+
+  <section class="OrdersCustomerPage__mainBlock">
+
+    <h1 class="OrdersCustomerPage__title"> Order History </h1>
+
+    <%= render partial: "orders/orderslist-section", locals: {
+        editable: true,
+        section_head: "Pending Orders",
+        orders: @orders.pending,
+        shrinkable: false
+    } %>
+
+    <%= render partial: "orders/orderslist-section", locals: {
+        editable: false,
+        section_head: "Past Orders",
+        orders: @orders.handled,
+        shrinkable: true
+    } %>
+
+  </section>
 </article>

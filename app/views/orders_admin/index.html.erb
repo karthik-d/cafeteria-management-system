@@ -52,7 +52,7 @@
           <% if current_user.check_role("billing_clerk") %>
             <h1 class="OrdersAdminPage__title"> Order Queue </h1>
           <% else %>
-            <h1 class="OrdersAdminPage__title"> Order Queue </h1>
+            <h1 class="OrdersAdminPage__title"> Order History </h1>
           <% end %>
 
           <%= render partial: "orderslist-section", locals: {

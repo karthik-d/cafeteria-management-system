@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   resources :cart_items
 
   resources :orders
+  post "/orders/search", to: "orders#search"
+
   resources :order_items
 
   get "/", to: "home#index", as: :root

@@ -6,6 +6,22 @@ class OrdersController < ApplicationController
     render "index"
   end
 
+  def search
+    # POST /orders/search
+    start_date = params[:start_date]
+    end_date = params[:end_date]
+    status = params[:status]
+    @orders = current_user.order.
+                          after(start_date).
+                          upto(end_date).
+                          send(status.to_sym).
+                          order(created_at: :DESC)
+    @start_date = start_date
+    @end_date = end_date
+    @status = status
+    render "index"
+  end
+
   def new
     render "new"
   end

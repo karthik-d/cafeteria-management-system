@@ -104,9 +104,12 @@
 }
 
 .OrdersCustomerPage{
-    max-width: 400px;
+    max-width: 900px;
     margin: 40px auto;
     font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
 }
 
 .OrdersCustomerPage__title {
@@ -121,6 +124,74 @@
 .OrdersCustomerPage__subtitle{
     font-size: 18px;
     color: #453C52;
+}
+
+.OrdersCustomerPage__filterBlock{
+  width: 30%;
+  border-width: 2px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #453C52;
+  margin-right: 60px;
+  margin-top: 120px;
+  padding: 10px 0px;
+}
+
+.OrderCustomer__filterField{
+    width: max-content;
+    margin: 20px auto;
+}
+
+.OrderCustomer__filterLabel{
+    font-weight: 600;
+    margin-left: 6px;
+    color: #453C52;
+    display: block;
+    font-size: 14px;
+    width: max-content;
+    margin-bottom: 2px;
+}
+
+.OrderCustomer__inputField{
+  margin: 4px 6px;
+  height: 20px;
+  width: 160px;
+  text-align: center;
+}
+
+.OrderCustomer__dateField{
+  font-family: inherit;
+}
+
+.OrderCustomer__statusField{
+  height: 30px;
+  width: 180px;
+  background: inherit;
+  text-decoration: none;
+  border: solid;
+  border-color: gray;
+  border-width: 0.5px;
+}
+
+.OrderCustomer__apply{
+  width: max-content;
+  margin: 0 auto;
+}
+
+.OrderCustomer__applyFilters{
+  width: 140px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+  border: 0px;
+  padding: 4px;
+  background: #453C52;
+  color: #ffffff;
+  margin: 20px;
+}
+
+.OrdersCustomerPage__mainBlock{
+  width: 70%;
 }
 
 .OrdersCustomerPage__listing {
